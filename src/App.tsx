@@ -103,7 +103,7 @@ export default function App() {
       <header className="topbar">
         <div>
           <p className="eyebrow">Murmuration</p>
-          <h1>AI-Assisted Grid Resilience</h1>
+          <h1>Grid Resilience Incident Replay</h1>
         </div>
         <div className="phase-pill">{complete ? 'Demo Complete' : phaseLabel}</div>
       </header>
@@ -115,7 +115,7 @@ export default function App() {
         </div>
         <div className="actions">
           <button onClick={triggerStressEvent} disabled={running}>
-            {running ? 'Running Event' : 'Trigger Grid Stress Event'}
+            {running ? 'Scenario Running' : 'Run Texas Stress Scenario'}
           </button>
           <button className="secondary" onClick={reset}>
             Reset
@@ -150,7 +150,7 @@ export default function App() {
           </div>
           <GridGraph nodes={nodes} edges={edges} />
           <section className="decision-card">
-            <h2>Protocol Decision</h2>
+            <h2>Murmuration Recommendation</h2>
             <ul>
               {decision.map((item) => (
                 <li key={item}>{item}</li>
