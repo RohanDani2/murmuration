@@ -184,8 +184,9 @@ h2 {
 }
 
 .map-canvas {
-  height: min(58vh, 620px);
-  min-height: 420px;
+  flex: 1;
+  height: min(50vh, 560px);
+  min-height: 320px;
   border: 1px solid rgba(125, 158, 199, 0.22);
   border-radius: 10px;
   overflow: hidden;
@@ -578,7 +579,7 @@ h2 {
 
   .workspace {
     grid-template-columns: 1fr;
-    grid-template-rows: minmax(0, 1fr) 220px;
+    grid-template-rows: minmax(0, 1fr);
   }
 
   .story-band {
@@ -610,7 +611,7 @@ h2 {
   }
 
   .side-panel {
-    overflow: hidden;
+    display: none;
   }
 
   .panel {
