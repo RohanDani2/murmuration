@@ -27,12 +27,12 @@ export const texasStressScenario: Scenario = {
     {
       delayMs: 0,
       label: 'Stress Detected',
-      headline: 'Texas needs help: forecasted load is now in emergency range.',
-      subhead: 'Murmuration elevates Texas as the priority while keeping critical services visible.',
+      headline: 'Texas posts a request for fast grid relief.',
+      subhead: 'Murmuration turns a grid problem into a market request: who can help, for how long, and at what price?',
       story: 'need',
       decision: [
-        'Prioritize Texas before residential interruptions expand.',
-        'Keep hospitals, water, and emergency services marked as protected.',
+        'Buyer: Texas load pocket needs 1,170 MW of relief.',
+        'Murmuration searches advertised flex offers.',
       ],
       logs: [
         { level: 'critical', message: 'Demand spike detected in Texas. Load is approaching emergency range.' },
@@ -48,12 +48,12 @@ export const texasStressScenario: Scenario = {
     {
       delayMs: 1200,
       label: 'Virginia Transfer',
-      headline: 'Best near-term source found: Virginia can safely transfer surplus.',
-      subhead: 'The system chooses the lowest-risk available route first, before draining reserves.',
+      headline: 'Murmuration accepts the first offer: Virginia surplus.',
+      subhead: 'The marketplace match is simple: Texas needs relief, Virginia advertises available capacity, Murmuration routes it.',
       story: 'source',
       decision: [
-        'Use 850 MW from Virginia to bring Texas below emergency threshold.',
-        'Keep distributed reserves available as the next support layer.',
+        '850 MW accepted from Virginia at $280/MWh for 90 minutes.',
+        'DER reserves remain available as the next support layer.',
       ],
       logs: [
         { level: 'info', message: 'Virginia has surplus capacity. Dispatching 850 MW to Texas.' },
@@ -71,12 +71,12 @@ export const texasStressScenario: Scenario = {
     {
       delayMs: 2600,
       label: 'Reserves Dispatch',
-      headline: 'Second support layer dispatched: distributed reserves finish stabilization.',
-      subhead: 'Household and enterprise storage fills the remaining gap without sacrificing protected services.',
+      headline: 'Murmuration accepts the second offer: DER reserve pool.',
+      subhead: 'The remaining gap is filled by household and enterprise reserves, turning small assets into one useful market participant.',
       story: 'route',
       decision: [
-        'Dispatch 320 MW from distributed reserves.',
-        'Route support to Texas while preserving critical service priority.',
+        '320 MW accepted from distributed reserves at $140/MWh for 45 minutes.',
+        'Protected load remains online.',
       ],
       logs: [
         { level: 'info', message: 'Household and enterprise reserves dispatch 320 MW.' },
@@ -99,11 +99,11 @@ export const texasStressScenario: Scenario = {
     {
       delayMs: 4200,
       label: 'Stable',
-      headline: 'Outcome: Texas is stable and protected services stayed online.',
-      subhead: 'The visible story is simple: forecast need, find supply, route power, protect people.',
+      headline: 'Marketplace result: sellers got paid, Texas stabilized, critical load stayed online.',
+      subhead: 'Tomorrow this can become a spot-flex marketplace: data centers, homes, and grid regions advertise what they can give or reduce.',
       story: 'protect',
       decision: [
-        'Texas returned to stable load.',
+        'Accepted offers supplied 1,170 MW of relief.',
         'Critical load remained protected throughout the event.',
       ],
       logs: [
