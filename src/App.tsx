@@ -41,6 +41,13 @@ export default function App() {
   const [running, setRunning] = useState(false);
   const [complete, setComplete] = useState(false);
   const timers = useRef<number[]>([]);
+  const marketRequest = complete
+    ? 'Request filled: 1,170 MW'
+    : phaseLabel === 'Ready'
+      ? 'No active request'
+      : 'Texas needs 1,170 MW relief';
+  const acceptedVirginia = activeStory === 'source' || activeStory === 'route' || activeStory === 'protect';
+  const acceptedReserve = activeStory === 'route' || activeStory === 'protect';
 
   function reset() {
     timers.current.forEach(window.clearTimeout);
@@ -150,12 +157,36 @@ export default function App() {
           </div>
           <GridGraph nodes={nodes} edges={edges} />
           <section className="decision-card">
-            <h2>Murmuration Recommendation</h2>
-            <ul>
-              {decision.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
+            <h2>Flex Marketplace</h2>
+            <strong>{complete ? 'Matched and settled' : phaseLabel === 'Ready' ? 'Waiting for grid request' : 'Matching available offers'}</strong>
+            <p>{decision.join(' ')}</p>
+            <div className="market-request">
+              <span>Grid Request</span>
+              <strong>{marketRequest}</strong>
+            </div>
+            <div className="source-list">
+              <article className={`source-row ${acceptedVirginia ? 'accepted' : ''}`}>
+                <div>
+                  <b>Virginia surplus</b>
+                  <small>$280/MWh - 90 min</small>
+                </div>
+                <strong>850 MW</strong>
+              </article>
+              <article className={`source-row ${acceptedReserve ? 'accepted' : ''}`}>
+                <div>
+                  <b>DER reserve pool</b>
+                  <small>$140/MWh - 45 min</small>
+                </div>
+                <strong>320 MW</strong>
+              </article>
+              <article className="source-row">
+                <div>
+                  <b>Ohio data center</b>
+                  <small>Future flex seller</small>
+                </div>
+                <strong>Watching</strong>
+              </article>
+            </div>
           </section>
         </section>
         <aside className="side-panel">
