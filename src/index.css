@@ -91,6 +91,41 @@ h2 {
   gap: 10px;
 }
 
+.story-band {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  padding: 14px 24px;
+  border-bottom: 1px solid #1f2a44;
+  background: #0f172a;
+}
+
+.story-step {
+  border: 1px solid #263653;
+  border-radius: 8px;
+  padding: 10px;
+  background: #111c31;
+}
+
+.story-step span {
+  display: block;
+  color: #8aa0be;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.story-step strong {
+  display: block;
+  margin-top: 4px;
+  font-size: 14px;
+}
+
+.story-step.active {
+  border-color: #2dd4bf;
+  box-shadow: inset 0 0 0 1px rgba(45, 212, 191, 0.35);
+}
+
 .workspace {
   flex: 1;
   display: grid;
@@ -98,12 +133,34 @@ h2 {
   min-height: 0;
 }
 
+.graph-area {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  padding: 34px;
+}
+
+.graph-title {
+  max-width: 760px;
+  display: grid;
+  gap: 6px;
+}
+
+.graph-title strong {
+  color: #f8fafc;
+  font-size: 20px;
+}
+
+.graph-title span {
+  color: #94a3b8;
+  line-height: 1.45;
+}
+
 .graph {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 34px;
-  padding: 40px;
 }
 
 .graph-row {
@@ -254,6 +311,25 @@ h2 {
   margin-right: 80px;
 }
 
+.decision-card {
+  border: 1px solid #263653;
+  border-radius: 8px;
+  background: #111c31;
+  padding: 16px;
+}
+
+.decision-card h2 {
+  color: #2dd4bf;
+  margin-bottom: 10px;
+}
+
+.decision-card ul {
+  margin: 0;
+  padding-left: 18px;
+  color: #cbd5e1;
+  line-height: 1.6;
+}
+
 .side-panel {
   min-height: 0;
   border-left: 1px solid #1f2a44;
@@ -351,6 +427,15 @@ h2 {
     grid-template-columns: 1fr;
   }
 
+  .story-band {
+    grid-template-columns: 1fr 1fr;
+    padding: 12px;
+  }
+
+  .graph-area {
+    padding: 18px;
+  }
+
   .graph-row {
     grid-template-columns: 1fr;
   }
@@ -367,5 +452,23 @@ h2 {
   .side-panel {
     border-left: 0;
     border-top: 1px solid #1f2a44;
+  }
+}
+
+@media (max-width: 520px) {
+  .story-band {
+    grid-template-columns: 1fr;
+  }
+
+  .actions {
+    width: 100%;
+  }
+
+  .actions button {
+    flex: 1;
+  }
+
+  h1 {
+    font-size: 22px;
   }
 }
