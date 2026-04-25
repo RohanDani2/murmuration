@@ -33,6 +33,10 @@ export interface LogEntry {
 export interface Phase {
   delayMs: number;
   label: string;
+  headline: string;
+  subhead: string;
+  story: 'need' | 'source' | 'route' | 'protect';
+  decision: string[];
   logs: Omit<LogEntry, 'id' | 'ts'>[];
   nodes: Partial<Record<GridNode['id'], Partial<GridNode>>>;
   edges: Partial<Record<GridEdge['id'], Partial<GridEdge>>>;
