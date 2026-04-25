@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import type { GridEdge, GridNode } from '../types';
 
 interface GridGraphProps {
@@ -59,10 +60,9 @@ export function GridGraph({ nodes, edges }: GridGraphProps) {
         </svg>
       </div>
       <svg className="route-layer" viewBox="0 0 1000 650" preserveAspectRatio="none" aria-hidden="true">
-        <path className={routeClass(edges, 'va-tx')} d="M660 292 C620 340 560 385 470 422" />
-        <path className={routeClass(edges, 'reserve-tx', 'reserve-active')} d="M250 403 C315 440 390 445 470 422" />
-        <path className={routeClass(edges, 'tx-critical')} d="M470 422 C560 456 660 458 750 448" />
-        <path className="route future-route" d="M580 234 C550 296 515 352 470 422" />
+        <path className={routeClass(edges, 'va-tx')} d="M660 292 C620 330 545 380 470 422" />
+        <path className={routeClass(edges, 'reserve-tx', 'reserve-active')} d="M250 403 C315 410 390 414 470 422" />
+        <path className={routeClass(edges, 'tx-critical')} d="M470 422 C555 418 650 424 750 448" />
       </svg>
       <RegionMarker node={byId.virginia} />
       <RegionMarker node={byId.texas} />
@@ -75,6 +75,15 @@ export function GridGraph({ nodes, edges }: GridGraphProps) {
       </div>
       <RegionMarker node={byId.reserve} />
       <RegionMarker node={byId.critical} />
+      <RouteLabel className="label-va" visible={edges.find((edge) => edge.id === 'va-tx')?.status === 'active'}>
+        VA -&gt; TX
+      </RouteLabel>
+      <RouteLabel className="label-reserve" visible={edges.find((edge) => edge.id === 'reserve-tx')?.status === 'active'}>
+        DER -&gt; TX
+      </RouteLabel>
+      <RouteLabel className="label-critical" visible={edges.find((edge) => edge.id === 'tx-critical')?.status === 'active'}>
+        TX -&gt; 911
+      </RouteLabel>
       <div className="map-legend">
         <span>Red: demand risk</span>
         <span>Teal: available supply</span>
@@ -83,4 +92,8 @@ export function GridGraph({ nodes, edges }: GridGraphProps) {
       </div>
     </section>
   );
+}
+
+function RouteLabel({ children, className, visible }: { children: ReactNode; className: string; visible: boolean }) {
+  return <div className={`route-label ${className} ${visible ? 'visible' : ''}`}>{children}</div>;
 }
