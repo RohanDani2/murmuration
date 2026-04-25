@@ -1,0 +1,67 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* React Flow custom styles */
+.react-flow__background {
+  background: #0f172a;
+}
+
+.react-flow__controls button {
+  background: #1e293b;
+  border-color: #334155;
+  color: #94a3b8;
+}
+
+.react-flow__controls button:hover {
+  background: #334155;
+}
+
+.react-flow__edge-path {
+  transition: stroke 0.5s ease;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 3px;
+}
+
+/* Pulse animation for overloaded nodes */
+@keyframes pulse-red {
+  0%, 100% { box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); }
+  50% { box-shadow: 0 0 30px rgba(239, 68, 68, 0.8), 0 0 60px rgba(239, 68, 68, 0.3); }
+}
+
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 10px rgba(34, 197, 94, 0.3); }
+  50% { box-shadow: 0 0 25px rgba(34, 197, 94, 0.6); }
+}
+
+.node-overload {
+  animation: pulse-red 1s ease-in-out infinite;
+}
+
+.node-active {
+  animation: pulse-green 2s ease-in-out infinite;
+}
