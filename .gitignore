@@ -32,3 +32,8 @@ murmuration/murmuration/data/US_Electric_Power_Transmission_Lines_*/
 # --- runtime logs ---
 *.log
 /tmp/murm-logs/
+
+# --- internal docs not for public repo ---
+MURMURATION.md
+MURMURATION.pdf
+PITCH.md
