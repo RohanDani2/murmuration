@@ -32,8 +32,8 @@ from pathlib import Path
 import pandas as pd
 from dotenv import load_dotenv
 
-import compute_agent
-import gridcache
+import agentic_workflow.compute_agent as compute_agent
+import agentic_workflow.gridcache as gridcache
 
 load_dotenv()
 

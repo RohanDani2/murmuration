@@ -27,8 +27,8 @@ import pandas as pd
 from anthropic import Anthropic
 from dotenv import load_dotenv
 
-import gridcache
-import grid_agent
+import agentic_workflow.gridcache as gridcache
+import agentic_workflow.grid_agent as grid_agent
 
 load_dotenv()
 

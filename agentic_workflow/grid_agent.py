@@ -28,7 +28,7 @@ import sys
 from anthropic import Anthropic
 from dotenv import load_dotenv
 
-import gridcache
+import agentic_workflow.gridcache as gridcache
 
 load_dotenv()
 
