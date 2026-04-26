@@ -119,12 +119,11 @@ h2 {
   align-items: center;
   gap: 10px;
   margin-top: 10px;
-  padding: 8px 12px;
-  border: 1px solid rgba(52, 211, 153, 0.45);
+  padding: 9px 14px;
+  border: 1px solid rgba(52, 211, 153, 0.65);
   border-radius: 8px;
   background:
-    linear-gradient(90deg, rgba(52, 211, 153, 0.18), rgba(52, 211, 153, 0.06)),
-    rgba(7, 17, 31, 0.6);
+    linear-gradient(90deg, rgba(8, 26, 21, 0.82), rgba(8, 26, 21, 0.92));
   text-decoration: none;
   color: inherit;
   animation: realDataPulse 2.4s ease-in-out infinite;
@@ -132,39 +131,69 @@ h2 {
 }
 
 .real-data-banner:hover {
-  border-color: rgba(52, 211, 153, 0.85);
+  border-color: rgba(52, 211, 153, 0.95);
+  background: linear-gradient(90deg, rgba(8, 26, 21, 0.92), rgba(8, 26, 21, 1));
 }
 
 @keyframes realDataPulse {
   0%, 100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
-  50%      { box-shadow: 0 0 0 6px rgba(52, 211, 153, 0.12); }
+  50%      { box-shadow: 0 0 0 6px rgba(52, 211, 153, 0.18); }
 }
 
 .rdb-tag {
-  display: inline-block;
-  padding: 2px 7px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
   border-radius: 4px;
-  background: #34d399;
-  color: #05201e;
-  font-size: 10px;
+  background: #047857;             /* dark emerald — high contrast vs white text */
+  color: #ffffff !important;       /* defensive: prevent any ancestor rule from inheriting */
+  font-size: 10.5px;
   font-weight: 900;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.14em;
   white-space: nowrap;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
+  border: 1px solid #34d399;
+  box-shadow: 0 0 12px rgba(52, 211, 153, 0.4);
+}
+
+/* Pulsing dot before the text — universal "live" signal */
+.rdb-tag::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #6ee7b7;
+  box-shadow: 0 0 6px #6ee7b7;
+  animation: rdbDot 1.4s ease-in-out infinite;
+}
+
+@keyframes rdbDot {
+  0%, 100% { opacity: 1;   transform: scale(1); }
+  50%      { opacity: 0.45; transform: scale(0.85); }
 }
 
 .rdb-text {
   flex: 1;
-  color: #d1fae5;
-  font-size: 12.5px;
+  color: #ffffff;
+  font-size: 13.5px;
   font-weight: 800;
-  line-height: 1.3;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
 }
 
 .rdb-source {
-  color: #a7f3d0;
+  color: #6ee7b7;
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: 0.02em;
   white-space: nowrap;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.real-data-banner:hover .rdb-source {
+  color: #a7f3d0;
 }
 
 .bus-real {
@@ -279,7 +308,7 @@ h2 {
 .workspace {
   min-height: 0;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 380px;
+  grid-template-columns: minmax(0, 1fr) 440px;
   overflow: hidden;
 }
 
@@ -326,6 +355,94 @@ h2 {
   color: #abc0db;
   line-height: 1.45;
   font-size: 13px;
+}
+
+/* Wrapper around the map canvas — gives map-overlay children
+   (StabilityGauge, FlashBanner, LegendStrip) a positioning context
+   that excludes the headline / view-tabs strip above the map. */
+.map-frame {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* LegendStrip — always-visible flow-type key at top-center of the map */
+.legend-strip {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 7;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border: 1px solid rgba(94, 234, 212, 0.32);
+  border-radius: 999px;
+  background: rgba(7, 17, 31, 0.86);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.45);
+  pointer-events: auto;
+  max-width: calc(100% - 28px);
+}
+
+.lg2-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: rgba(20, 36, 60, 0.55);
+  border: 1px solid transparent;
+  color: #cfe0f8;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  transition: opacity 240ms ease, color 240ms ease, border-color 240ms ease, background 240ms ease;
+  cursor: help;
+}
+
+.lg2-item.off {
+  opacity: 0.55;
+}
+
+.lg2-item.on {
+  opacity: 1;
+  color: #ffffff;
+}
+
+.lg2-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #cfe0f8;
+  box-shadow: 0 0 0 2px rgba(7, 17, 31, 0.65);
+  flex-shrink: 0;
+}
+
+.lg2-stress  .lg2-dot { background: #fb7185; }
+.lg2-compute .lg2-dot { background: #7dd3fc; }
+.lg2-vpp     .lg2-dot { background: #c084fc; }
+.lg2-protect .lg2-dot { background: #34d399; }
+
+.lg2-stress.on  { border-color: rgba(251, 113, 133, 0.85); animation: lg2Pulse 1.6s ease-in-out infinite; }
+.lg2-compute.on { border-color: rgba(125, 211, 252, 0.85); animation: lg2Pulse 1.6s ease-in-out infinite; }
+.lg2-vpp.on     { border-color: rgba(192, 132, 252, 0.85); animation: lg2Pulse 1.6s ease-in-out infinite; }
+.lg2-protect.on { border-color: rgba(52, 211, 153, 0.85);  animation: lg2Pulse 1.6s ease-in-out infinite; }
+
+.lg2-stress.on  .lg2-dot { box-shadow: 0 0 0 2px rgba(7,17,31,0.65), 0 0 8px rgba(251,113,133,0.85); }
+.lg2-compute.on .lg2-dot { box-shadow: 0 0 0 2px rgba(7,17,31,0.65), 0 0 8px rgba(125,211,252,0.85); }
+.lg2-vpp.on     .lg2-dot { box-shadow: 0 0 0 2px rgba(7,17,31,0.65), 0 0 8px rgba(192,132,252,0.85); }
+.lg2-protect.on .lg2-dot { box-shadow: 0 0 0 2px rgba(7,17,31,0.65), 0 0 8px rgba(52,211,153,0.85); }
+
+@keyframes lg2Pulse {
+  0%, 100% { background: rgba(20, 36, 60, 0.55); }
+  50%      { background: rgba(20, 36, 60, 0.95); }
 }
 
 .globe-canvas, .flatmap-canvas {
@@ -507,6 +624,13 @@ h2 {
   animation: flatDashFlow 1.1s linear infinite;
   filter: drop-shadow(0 0 4px rgba(125, 211, 252, 0.7));
   pointer-events: none;
+  transition: stroke 320ms ease, opacity 320ms ease, filter 320ms ease;
+}
+
+.flat-arc-compute.dimmed {
+  stroke: #5a8aa8;
+  opacity: 0.55;
+  filter: none;
 }
 .flat-arc-protect {
   fill: none;
@@ -590,6 +714,213 @@ h2 {
 .globe-tip strong { color: #5eead4; font-size: 13px; }
 .globe-tip .muted { color: #91a7c4; font-size: 11px; }
 .globe-tip b { color: #f8fbff; }
+
+/* Flash banner — center-screen overlay describing what just happened.
+   Stays visible until user clicks anywhere on it, clicks the ✕, or presses ESC. */
+.flash-banner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 26px 14px;
+  border-radius: 14px;
+  background: rgba(7, 17, 31, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 16px 60px rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  max-width: 560px;
+  animation: flashBannerIn 280ms ease-out;
+}
+
+@keyframes flashBannerIn {
+  from { opacity: 0; transform: translate(-50%, -50%) scale(0.92); }
+  to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+.flash-banner:hover .flash-dismiss {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.flash-dismiss {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.flash-dismiss:hover {
+  background: rgba(255, 255, 255, 0.18) !important;
+  color: #ffffff;
+}
+
+.flash-icon {
+  font-size: 38px;
+  line-height: 1;
+  filter: drop-shadow(0 0 6px currentColor);
+}
+
+.flash-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.flash-title {
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #f8fbff;
+}
+
+.flash-line {
+  font-size: 13px;
+  font-weight: 700;
+  color: #cfe0f8;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.02em;
+}
+
+.flash-hint {
+  margin-top: 6px;
+  font-size: 10px;
+  font-weight: 600;
+  font-style: italic;
+  color: rgba(207, 224, 248, 0.55);
+  letter-spacing: 0.04em;
+}
+
+.flash-stress   { border: 2px solid rgba(251, 113, 133, 0.7); }
+.flash-stress   .flash-icon { color: #fb7185; }
+.flash-stress   .flash-title { color: #fecdd3; }
+
+.flash-action   { border: 2px solid rgba(125, 211, 252, 0.7); }
+.flash-action   .flash-icon { color: #7dd3fc; }
+.flash-action   .flash-title { color: #bae6fd; }
+
+.flash-resolved { border: 2px solid rgba(192, 132, 252, 0.75); }
+.flash-resolved .flash-icon { color: #c084fc; }
+.flash-resolved .flash-title { color: #e9d5ff; }
+
+.flash-settled  { border: 2px solid rgba(52, 211, 153, 0.75); }
+.flash-settled  .flash-icon { color: #34d399; }
+.flash-settled  .flash-title { color: #a7f3d0; }
+
+/* Stability gauge — per-BA stress at a glance, top-left of map */
+.stability-gauge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 5;
+  min-width: 188px;
+  padding: 10px 12px;
+  border: 1px solid rgba(94, 234, 212, 0.35);
+  border-radius: 10px;
+  background: rgba(7, 17, 31, 0.86);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.5);
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  pointer-events: none;
+}
+
+.stability-gauge header {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.sg-title {
+  color: #5eead4;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.sg-sub {
+  color: #6b87a8;
+  font-size: 9px;
+  font-style: italic;
+  letter-spacing: 0.04em;
+}
+
+.sg-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.sg-row {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  align-items: center;
+  gap: 8px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  transition: color 280ms ease;
+}
+
+.sg-ba {
+  color: #cfe0f8;
+}
+
+.sg-status {
+  font-size: 9px;
+  letter-spacing: 0.06em;
+}
+
+.sg-pips {
+  display: flex;
+  gap: 3px;
+}
+
+.sg-pip {
+  width: 9px;
+  height: 6px;
+  border-radius: 2px;
+  background: rgba(125, 158, 199, 0.18);
+  transition: background 280ms ease, box-shadow 280ms ease;
+}
+
+/* By-status colors */
+.sg-healthy    .sg-pip.on { background: #5eead4; }
+.sg-healthy    .sg-status { color: #5eead4; }
+.sg-stable     .sg-pip.on { background: #a7f3d0; }
+.sg-stable     .sg-status { color: #a7f3d0; }
+.sg-recovering .sg-pip.on { background: #32d5c3; box-shadow: 0 0 6px rgba(50, 213, 195, 0.7); }
+.sg-recovering .sg-status { color: #32d5c3; }
+.sg-warning    .sg-pip.on { background: #fbbf24; box-shadow: 0 0 6px rgba(251, 191, 36, 0.7); }
+.sg-warning    .sg-status { color: #fbbf24; animation: sgPulse 1.4s ease-in-out infinite; }
+.sg-critical   .sg-pip.on { background: #fb7185; box-shadow: 0 0 8px rgba(251, 113, 133, 0.85); }
+.sg-critical   .sg-status { color: #fb7185; animation: sgPulse 1s ease-in-out infinite; }
+.sg-critical   .sg-ba     { color: #fecdd3; }
+
+@keyframes sgPulse {
+  50% { opacity: 0.55; }
+}
 
 /* Gate overlay — pause-and-click button for VPP engagement moment */
 .gate-overlay {
@@ -888,7 +1219,7 @@ h2 {
 /* "Now playing" overlay — top-center of globe canvas */
 .now-playing {
   position: absolute;
-  top: 14px;
+  top: 64px;             /* clear the LegendStrip above */
   left: 50%;
   transform: translateX(-50%);
   z-index: 6;

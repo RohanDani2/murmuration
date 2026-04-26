@@ -77,6 +77,13 @@ export interface Phase {
   gateLabel?: string;
   /** Optional small line under the resume button. */
   gateSublabel?: string;
+  /** When set, a 1.5-sec flash overlay appears center-screen showing what just happened in plain English. */
+  flash?: {
+    icon: '🚨' | '▶' | '✓' | '⚡';
+    tone: 'stress' | 'action' | 'resolved' | 'settled';
+    title: string;        // big, ALL CAPS
+    lines: string[];      // 1-3 short descriptive lines underneath
+  };
 }
 
 export interface ScenarioAnchor {

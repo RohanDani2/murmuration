@@ -1,141 +1,151 @@
-# Demo Flow — Murmuration
+# Demo Flow — Murmuration  (5-min budget)
 
-> First-stab mind map for the live pitch. Iterate freely. Treat each top-level node as a beat; sub-bullets are optional ammo.
+> Live pitch script for the SCSP Hackathon Grid track. Judges: Monty McGee (operational realism) + Dr. Masoud Barati (model correctness). Rubric mapping in `criteria.md`. Hard-question defenses in `judge_qa_prep.md`.
+>
+> **Hard rule:** SCSP submission is "kept under 5 minutes of demo time." Q&A is *separate* and after — don't blow the 5 min trying to pre-empt questions.
+>
+> **Claim hygiene:** "would have softened," "would have prevented X% of," "measurable supplement." Never absolutes. Uri killed 246 people; we owe the language.
 
 ## Visual map
 
 ```mermaid
 mindmap
-  root((Murmuration<br/>10-min demo))
-    1 · Open
+  root((Murmuration<br/>5-min demo))
+    1 · Cold open slide  (~30s)
       Hook line
-      Who we are
-      What you'll see in 10 min
-    2 · Problem
-      Grid under stress
-      AI compute is huge + inflexible
-      DERs underused
-      No common protocol
-    3 · The protocol
-      FlexibilityEnvelope
-      Standing offers · auto-accept
-      Bilateral · opaque payloads
-      One schema · every scale
-    4 · Live demo
-      Scenario 1 · ERCOT heat wave
-      Scenario 2 · CAISO wildfire / PSPS
-      Scenario 3 · Duck curve
-    5 · Counterfactual
-      Anchor to real incident
-      WITH vs WITHOUT
-      Conservative claim language
-    6 · Close
+      Names + track
+      4-beat arc visible
+    2 · ERCOT heat wave  (~1:45)
+      NEED → SOURCE → ROUTE → PROTECT
+      WITH/WITHOUT toggle inline
+      Anchor · Uri Feb 2021
+    3 · Duck curve  (~1:30)
+      Negative LMP · compute leans IN
+      6pm flip · VPP shaves ramp
+      Anchor · CAISO curtailment
+    4 · Live close  (~30s)
       Why now
-      What we want next
-      Q&A
+      Pilot ask
+      Hand to Q&A
 ```
+
+## Time budget (strict)
+
+| Beat | Target | Hard cap |
+|---|---|---|
+| 1 · Cold open slide | 0:30 | 0:40 |
+| 2 · ERCOT heat wave | 1:45 | 2:00 |
+| 3 · Duck curve | 1:30 | 1:45 |
+| 4 · Live close | 0:30 | 0:40 |
+| **Total** | **4:15** | **5:00** |
+
+45-second buffer is intentional. Demos drift. If you're at 3:30 entering Beat 4, cut the close to 30s flat and stop talking.
 
 ---
 
-## Beat 1 · Open  (~45s)
+## Beat 1 · Cold open slide  (~30s)
 
-- **Hook line** (one sentence — punchy, not jargon)
-  - candidate A: "The grid and the AI compute fleet need to start talking. We built the protocol."
-  - candidate B: "Heat waves, wildfires, ramps — the grid keeps breaking. Meanwhile a million flexible loads sit idle. Here's why."
-  - candidate C: _add your own_
-- **Who we are** (5s — names + the SCSP track)
-- **What you'll see**
-  - One protocol
-  - Three real-world scenarios
-  - Numbers anchored to actual archived events
+Single slide. See `demo_slides.html` (or `demo_slides.md`).
 
-## Beat 2 · The problem  (~90s)
+- **Hook line** (lock one before stage):
+  - A: "The grid and the AI compute fleet need to start talking. We built the protocol."
+  - B: "Heat waves, wildfires, ramps — the grid keeps breaking. Meanwhile a million flexible loads sit idle."
+- **Names + SCSP Grid track**  (5s — fast)
+- **What you'll see**: "Two real-world scenarios, one protocol, anchored to actual archived events."
 
-- **Climate volatility** is hitting peaks the grid wasn't sized for
-- **AI compute** is the fastest-growing inflexible load in 50 years
-  - LBNL 2024 DC report numbers (cite §A4)
-- **DERs exist** at scale (VPPs, batteries, EVs, thermostats)
-  - but they aggregate to almost nothing in real events
-- **The gap**: no common protocol. Every dispatch is bespoke, manual, slow.
-- _Land on:_ "Today's response is peakers, curtailment, blackouts. We can do better."
+> Then — and this is the most important transition in the demo — close the slide and switch to the live app. Don't linger on the slide. The rest is shown, not told.
 
-## Beat 3 · The protocol  (~75s)
+## Beat 2 · ERCOT heat wave  (~1:45)
 
-- **FlexibilityEnvelope** = standing offer ("I can shed X MW for Y min at $Z/MWh, no per-event approval")
-- **Two agents** negotiate on a shared bus
-  - Grid-side agent (ISO operator persona)
-  - Compute-side agent (hyperscaler ops persona)
-- **Auto-accept within band** = no LLM round-trip on the dispatch path → response in <30s, not minutes
-- **One schema, every scale**: 200 MW DC ↔ 5 kW home battery without modification
+The dramatic one. Anchored to Feb 2021 Uri (246 deaths, $130B). McGee's "control room" beat.
 
-> Visual cue: bring up the bilateral-bus sequence diagram (`docs/murmuration_diagram.md` §5)
+### Phase walk (NEED → SOURCE → ROUTE → PROTECT)
 
-## Beat 4 · Live demo  (~4 min total · 70-80s per scenario)
+- **Need** (~25s): "HOU_HUB LMP just spiked $32 → $410. Real ERCOT archive, [date]. Operator screen shows headroom collapsing. Grid agent emits a `DispatchRequest` on the bilateral bus."
+  - *McGee hook:* this is what an operator sees. *Barati hook:* clean cause→effect — demand spike → price signal → bus message.
+- **Source** (~25s): "Compute fleet's standing envelope is already on file — 850 MW shed-able for up to 4 hours at $X/MWh. Auto-accept within band. Migration starts in 12 seconds."
+  - *Pre-empt the LLM question:* "Notice no LLM round-trip on this path. The envelope was written offline. Dispatch is deterministic by design — that's why it lands in seconds, not minutes."
+- **Route** (~20s): "Same protocol, six orders of magnitude smaller. VPP swarm, 47K homes, commits 320 MW. One wire format from data center to home battery."
+- **Protect** (~15s): "Frequency held. Hospitals never browned out. Settlement: peakers stayed cold."
 
-### 4a · ERCOT heat wave  (NEED → SOURCE → ROUTE → PROTECT)
-- _Click trigger_
-- Talking points per phase:
-  - **Need**: "HOU_HUB LMP just spiked $32 → $410. Real ERCOT archive, [date]."
-  - **Source**: "Compute fleet auto-accepts. 850 MW of training migrates to CA-North in 12s."
-  - **Route**: "VPP swarm — 47K homes — commits 320 MW. Same protocol, six orders of magnitude smaller."
-  - **Protect**: "Hospitals never lost frequency. Settlement: $X."
+### WITH / WITHOUT toggle  (~20s, integrated)
 
-### 4b · CAISO wildfire / PSPS
-- Talking points: "Now California. Same protocol — different physics."
-  - Bay Area DC routes work to ERCOT + PJM
-  - Local CA VPP holds critical load through PSPS window
+Toggle the counterfactual *inside this scenario*, not at the end of the deck. McGee + Barati both want the delta visible.
 
-### 4c · Duck curve  (the optimistic one)
-- "Not every event is a disaster. Sometimes there's too much clean energy."
-- Negative LMP → compute leans IN (gets paid to absorb)
-- 6pm sunset → flips to release + VPP shaves the ramp
-- _Land on:_ "The duck curve becomes negotiable."
+| | WITHOUT Murmuration | WITH Murmuration |
+|---|---|---|
+| Peaker MWh fired | ~Y MWh | 0 |
+| Customers exposed to brown-out risk | tens of thousands | 0 |
+| Frequency excursions | one event | 0 |
+| Settlement | scarcity prices | envelope rate |
 
-## Beat 5 · Counterfactual reveal  (~75s)
+> Speaker line on toggle: "Honest framing — we don't claim Murmuration would have prevented Uri. We claim it would have softened it. The 1.4M customers who lost power for days were the consequence of zero coordination. This is coordination."
 
-- Toggle "WITHOUT MURMURATION" view
-- Anchor scenario to its real-world incident:
-  - ERCOT heat → Uri Feb 2021 (246 deaths, $130B)
-  - PSPS → PG&E Oct 2019 (800K customers)
-  - Duck curve → CAISO 2024 (~800 GWh curtailed)
-- **Claim language hygiene**: "would have softened" / "would have prevented X% of" — never absolutes
-- _Honest concession:_ "We don't claim to prevent these. We claim a measurable supplement."
+## Beat 3 · Duck curve  (~1:30)
 
-## Beat 6 · Close + CTA  (~45s)
+The optimistic one. Bidirectional system dynamics. Barati's "feedback loops" beat. Less drama, more correctness.
 
-- **Why now**: protocol design + standing-envelope pattern works because LLMs can read intent and stay out of the dispatch path
-- **What we want**: pilot partners — one ISO + one hyperscaler campus + one VPP aggregator
-- **Hand off to Q&A**
+- **Setup** (~15s): "Not every grid event is a disaster. Sometimes there's too much clean energy. CAISO duck curve, April 15 2024. LMP at SP-15 went *negative* — -$51.56/MWh — between 11am and 2pm."
+- **Compute leans IN** (~25s): "Compute fleet's envelope says 'I'll absorb up to 600 MW at clearing price ≤ -$10.' It gets paid to soak up solar. Carbon factor at midday: ~50 g/kWh. Effectively free, low-carbon training compute."
+  - *Barati hook:* this shows the protocol is bidirectional — the same envelope goes the other way.
+- **Sunset flip** (~25s): "6pm. Sun drops. Net load ramps from 18 GW to 30 GW in three hours. The classic ramp. Compute fleet flips: releases the load it absorbed earlier, VPP swarm shaves the ramp peak."
+- **WITH / WITHOUT toggle** (~25s, integrated):
+
+| | WITHOUT | WITH |
+|---|---|---|
+| Curtailed renewables | ~Z MWh | reduced |
+| Evening ramp peak | spike | smoothed |
+| Carbon, midday compute | ~430 g/kWh (gas) | ~50 g/kWh (solar) |
+| Operator headroom | tight | restored |
+
+> Speaker line: "The duck curve becomes negotiable. Same protocol, opposite direction. CAISO curtailed roughly 800 GWh of renewables last year. Even shaving a fraction of that is real money and real carbon."
+
+## Beat 4 · Live close  (~30s)
+
+Stay in the live app. No second slide.
+
+- **Why now** (~10s): "LLMs can read operator intent and write standing envelopes — and stay out of the dispatch path. That's the unlock."
+- **Ask** (~10s): "We want a pilot. One ISO, one hyperscaler campus, one VPP aggregator. 12 months. No new market rules required."
+- **Hand off** (~10s): "Happy to take questions. PSPS scenario, the LLM envelope writer, threat model — all in the doc, ready to dive in."
+
+---
+
+## What we deliberately cut
+
+- **PSPS / wildfire scenario.** Strong, but two scenarios is the right number for 5 min and ERCOT + duck cover both stress and steady-state. PSPS is the strongest Q&A ammo if asked "what about wildfire?".
+- **Beat 5 standalone counterfactual.** Folded into each scenario's WITH/WITHOUT toggle — earns the same impact in less time.
+- **Slide 2 (problem framing) and Slide 3 (arc).** Speaker delivers verbally during the Beat 1 transition. Saves ~45s.
+
+If we recover time on stage and want a third scenario, queue PSPS — but only if Beat 3 finishes by 3:00.
 
 ---
 
 ## Q&A prep
 
-- "How is this different from existing demand response?"
-  - DR = manual, slow, contractual. Envelopes = standing, telemetric, settled per-event.
-- "Why should an ISO trust an LLM in the loop?"
-  - LLM is OUT of the dispatch path. It writes the standing envelope. Dispatch is deterministic.
-- "What's your data source?"
-  - gridstatus archive (CAISO/ERCOT/PJM), EIA-930, NREL PVWatts, CAISO OASIS. Cited in `docs/calibration.md`.
-- "What about cybersecurity?"
-  - Bilateral channel, opaque payloads, signed envelopes. Same trust model as ISO ↔ market participant today.
+Q&A is its own document — see `judge_qa_prep.md`. The hard questions and judge-specific framing live there.
+
+Quick lookup:
+- "Where's the AI?" → `judge_qa_prep.md` "The killer question"
+- "How is this different from DR?" → `judge_qa_prep.md` "why is this hard?"
+- "Threat model?" → `judge_qa_prep.md` "threat-model questions"
+- "What can the demo NOT do?" → `judge_qa_prep.md` "honest-limit questions"
 
 ---
 
 ## Logistics & contingencies
 
 - **Wifi assumption**: none. Demo is offline-safe (cached JSON in `public/cache/`).
-- **Backup**: pre-recorded video of full demo at `docs/demo/backup_video.mp4` (TODO).
+- **Backup**: pre-recorded video at `docs/demo/backup_video.mp4` (TODO).
 - **Failure mode**: if globe fails to load, fall back to scenario menu in side-panel.
-- **Time check**: aim 8 min for content, 2 min Q&A buffer in a 10-min slot.
-- **What to NOT click**: counterfactual toggle until Beat 5 (avoid spoiling the climax).
+- **Time check**: glance at the clock at the end of Beat 2. If past 2:30, trim Beat 3 setup.
+- **What to NOT click**: nothing — counterfactual is now per-scenario, not a separate reveal.
 
 ---
 
 ## Open questions / decisions to lock before stage
 
-- [ ] Which hook line? (A / B / C / new)
-- [ ] Demo on live data, cache-only, or hybrid?
-- [ ] Counterfactual toggle on by default during pitch?
-- [ ] Order of scenarios: ERCOT first (most dramatic) or duck curve first (most surprising)?
-- [ ] Who drives the keyboard, who narrates?
+- [ ] Hook line A or B?
+- [ ] Live data, cache-only, or hybrid?
+- [ ] Who drives the keyboard, who narrates? (Note: only need 1 person on-site per SCSP rules.)
+- [ ] Final slide deck on this laptop or co-hacker's? Whose UI dashboard wins which beat?
+- [ ] Backup video recorded?

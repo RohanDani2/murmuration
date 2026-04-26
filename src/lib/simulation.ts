@@ -164,6 +164,15 @@ export const ercotHeatWaveScenario: Scenario = {
       },
       edges: {},
       metrics: {},
+      flash: {
+        icon: '🚨',
+        tone: 'stress',
+        title: 'GRID STRESS DETECTED',
+        lines: [
+          'ERCOT-Houston-Hub LMP $9,000/MWh (price cap)',
+          '4 TX hospitals on protected-load watch',
+        ],
+      },
     },
     {
       delayMs: 1400,
@@ -238,6 +247,15 @@ export const ercotHeatWaveScenario: Scenario = {
       gated: true,
       gateLabel: 'Now engage the Virtual Power Plant',
       gateSublabel: '320 MW from 50K Texas homes · $140/MWh · 45 min · local injection into ERCOT',
+      flash: {
+        icon: '▶',
+        tone: 'action',
+        title: 'COMPUTE MIGRATION',
+        lines: [
+          '850 MW REROUTED · ERCOT → CAISO via scheduler',
+          'ERCOT: critical → warning · still needs more relief',
+        ],
+      },
     },
     {
       delayMs: 2800,
@@ -331,6 +349,16 @@ export const ercotHeatWaveScenario: Scenario = {
         settlementUsd: totalSettlement(ERCOT_DC_DISPATCH, ERCOT_VPP_DISPATCH),
         tonsCo2Avoided: totalTonsCo2(ERCOT_DC_DISPATCH, ERCOT_VPP_DISPATCH),
       },
+      flash: {
+        icon: '✓',
+        tone: 'resolved',
+        title: 'VIRTUAL POWER PLANT ENGAGED',
+        lines: [
+          '+320 MW local injection in ERCOT (50K TX homes)',
+          'ERCOT grid: WARNING → STABLE',
+          '4 critical hospitals now protected',
+        ],
+      },
     },
     {
       delayMs: 4400,
@@ -369,6 +397,15 @@ export const ercotHeatWaveScenario: Scenario = {
       },
       edges: {},
       metrics: {},
+      flash: {
+        icon: '⚡',
+        tone: 'settled',
+        title: 'SETTLED · ERCOT STABILIZED',
+        lines: [
+          '$424,200 paid · 750 tCO₂ avoided · 0 SLA breaches',
+          'Same protocol scaled across 200 MW DC + 5 kW home batteries',
+        ],
+      },
     },
   ],
 };
@@ -430,6 +467,15 @@ export const wildfireCaisoScenario: Scenario = {
       },
       edges: {},
       metrics: {},
+      flash: {
+        icon: '🚨',
+        tone: 'stress',
+        title: 'PSPS CONTINGENCY · CAISO',
+        lines: [
+          'Bay Area line-trip risk · 738K customers in PSPS shutoff zone',
+          'CA hospitals + medical-baseline households at risk',
+        ],
+      },
     },
     {
       delayMs: 1400,
@@ -495,6 +541,15 @@ export const wildfireCaisoScenario: Scenario = {
       gated: true,
       gateLabel: 'Now engage the California Virtual Power Plant',
       gateSublabel: '280 MW from 38K Bay-Area homes · $165/MWh · 240 min · CA hospitals stay online',
+      flash: {
+        icon: '▶',
+        tone: 'action',
+        title: 'MULTI-REGION JOB MIGRATION',
+        lines: [
+          '700 MW REROUTED · CAISO → ERCOT (450) + PJM (250)',
+          'CAISO: critical → warning · local relief still needed',
+        ],
+      },
     },
     {
       delayMs: 2800,
@@ -555,6 +610,16 @@ export const wildfireCaisoScenario: Scenario = {
         settlementUsd: totalSettlement(CAISO_VPP_DISPATCH),
         tonsCo2Avoided: totalTonsCo2({ mw: 700, durationMin: 240, ba: 'CAISO' }, CAISO_VPP_DISPATCH),
       },
+      flash: {
+        icon: '✓',
+        tone: 'resolved',
+        title: 'CA VPP ENGAGED · LOCAL HEADROOM RESTORED',
+        lines: [
+          '+280 MW from 38K Bay-Area homes (local injection)',
+          'CAISO grid: WARNING → STABLE',
+          '4 CA hospitals + medical baseline customers protected',
+        ],
+      },
     },
     {
       delayMs: 4400,
@@ -585,6 +650,15 @@ export const wildfireCaisoScenario: Scenario = {
       },
       edges: {},
       metrics: {},
+      flash: {
+        icon: '⚡',
+        tone: 'settled',
+        title: 'PSPS CLEARED · CAISO RESTORED',
+        lines: [
+          '$11,420 settlement · 192 min held · 28 tCO₂ avoided',
+          'Counterfactual: 2 peakers + rolling brownouts',
+        ],
+      },
     },
   ],
 };
@@ -649,6 +723,15 @@ export const duckCurveScenario: Scenario = {
       },
       edges: {},
       metrics: {},
+      flash: {
+        icon: '▶',
+        tone: 'action',
+        title: 'CURTAILMENT SOAK · COMPUTE LEANS IN',
+        lines: [
+          'CAISO LMP -$51.56/MWh (real Apr 15, 2024 print)',
+          'DC absorbs 900 MW of would-be-curtailed solar',
+        ],
+      },
     },
     {
       delayMs: 1400,
@@ -694,6 +777,15 @@ export const duckCurveScenario: Scenario = {
       gated: true,
       gateLabel: 'Now engage the Virtual Power Plant',
       gateSublabel: 'Shave the 6pm ramp · 510 MW from 64K homes · $220/MWh · 60 min · 2 peakers stay cold',
+      flash: {
+        icon: '🚨',
+        tone: 'stress',
+        title: 'EVENING RAMP · 14 GW SOLAR DROP',
+        lines: [
+          'CAISO LMP rises $185/MWh · stress 0.62',
+          'DC releases 900 MW absorbed earlier · still need ramp shaving',
+        ],
+      },
     },
     {
       delayMs: 2800,
@@ -750,6 +842,15 @@ export const duckCurveScenario: Scenario = {
         settlementUsd: totalSettlement(DUCK_DC_ABSORB, DUCK_VPP_DISPATCH),
         tonsCo2Avoided: totalTonsCo2(DUCK_DC_ABSORB, DUCK_VPP_DISPATCH),
       },
+      flash: {
+        icon: '✓',
+        tone: 'resolved',
+        title: 'VPP RAMP-SHAVE · 2 PEAKERS STAY COLD',
+        lines: [
+          '+510 MW from 64K homes during 6pm peak',
+          'CAISO grid: WARNING → STABLE · ramp absorbed',
+        ],
+      },
     },
     {
       delayMs: 4400,
@@ -779,6 +880,15 @@ export const duckCurveScenario: Scenario = {
       },
       edges: {},
       metrics: {},
+      flash: {
+        icon: '⚡',
+        tone: 'settled',
+        title: 'DUCK CURVE CLEARED',
+        lines: [
+          '$144,600 captured + 1,758 tCO₂ avoided',
+          'Compute absorbs surplus + VPP shaves the ramp · same protocol',
+        ],
+      },
     },
   ],
 };
@@ -850,6 +960,15 @@ export const novaCrowdOutScenario: Scenario = {
       },
       edges: {},
       metrics: {},
+      flash: {
+        icon: '🚨',
+        tone: 'stress',
+        title: 'STRUCTURAL STRAIN · NoVA',
+        lines: [
+          'PJM/Dominion: 4 GW DC growth by 2028 vs 2.1 GW substation capacity',
+          'Forecast: +$11/mo per residential household if costs socialize',
+        ],
+      },
     },
     {
       delayMs: 1400,
@@ -908,6 +1027,15 @@ export const novaCrowdOutScenario: Scenario = {
       gated: true,
       gateLabel: 'Now engage the Mid-Atlantic Virtual Power Plant',
       gateSublabel: '130 MW from PA/MD/VA homes · $110/MWh · 4-hr peak window · combined with DC commitment frees 480 MW for residential margin',
+      flash: {
+        icon: '▶',
+        tone: 'action',
+        title: 'STRUCTURAL FLEX COMMITMENT',
+        lines: [
+          'DC-PJM commits 350 MW × 4-hr/day curtailability for 12 months',
+          'Telemetry-settled · earns interconnection-queue priority',
+        ],
+      },
     },
     {
       delayMs: 2800,
@@ -968,6 +1096,15 @@ export const novaCrowdOutScenario: Scenario = {
         settlementUsd: totalSettlement(NOVA_DC_COMMIT, NOVA_VPP_DISPATCH),
         tonsCo2Avoided: totalTonsCo2(NOVA_DC_COMMIT, NOVA_VPP_DISPATCH),
       },
+      flash: {
+        icon: '✓',
+        tone: 'resolved',
+        title: 'MID-ATLANTIC VPP ENGAGED',
+        lines: [
+          '+130 MW from 18K PA/MD/VA homes (local injection)',
+          'Combined 480 MW residential margin · NoVA hospitals nominal',
+        ],
+      },
     },
     {
       delayMs: 4400,
@@ -1003,6 +1140,15 @@ export const novaCrowdOutScenario: Scenario = {
       },
       edges: {},
       metrics: {},
+      flash: {
+        icon: '⚡',
+        tone: 'settled',
+        title: 'RESIDENTIAL BILLS HELD · QUEUE APPROVED',
+        lines: [
+          'Dominion approves 800 MW new DC capacity · contingent on flex',
+          'Residential rate change: $0/mo (vs +$11 without protocol)',
+        ],
+      },
     },
   ],
 };

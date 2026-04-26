@@ -39,6 +39,9 @@ interface InnerProps {
   layers: LayerState;
   width: number;
   height: number;
+  /** When true, map-overlay labels are suppressed so the FlashBanner can
+   *  command attention without smaller labels poking out behind it. */
+  flashActive?: boolean;
 }
 
 function nodeLatLng(id: string) {
@@ -64,7 +67,7 @@ function arrowBearing(
   return (Math.atan2(-dLat, dLng) * 180) / Math.PI;
 }
 
-function GlobeInner({ nodes, edges, layers, width, height }: InnerProps) {
+function GlobeInner({ nodes, edges, layers, width, height, flashActive }: InnerProps) {
   const globeRef = useRef<any>(null);
   const byId = useMemo(
     () => Object.fromEntries(nodes.map((n) => [n.id, n])) as Record<string, GridNode>,
@@ -193,6 +196,8 @@ function GlobeInner({ nodes, edges, layers, width, height }: InnerProps) {
 
     // Cross-region arcs: compute migration over fiber. NOT electricity.
     // Within-region arcs (DC→critical) = local electrical power.
+    // When VPP halo is active, dim the compute arc so the new VPP visuals stand out.
+    const computeArcDimmed = byId.vpp?.status === 'active';
     edges.forEach((e) => {
       if (e.status !== 'active') return;
       if (e.from === 'vpp') return; // VPP rendered as ring, not arc
@@ -200,14 +205,15 @@ function GlobeInner({ nodes, edges, layers, width, height }: InnerProps) {
       const start = nodeLatLng(e.from);
       const end = nodeLatLng(e.to);
       if (!start || !end) return;
+      const c = computeArcDimmed ? '#5a8aa8' : COLORS.trunk;
       result.push({
         kind: 'compute',
         startLat: start.lat,
         startLng: start.lng,
         endLat: end.lat,
         endLng: end.lng,
-        color: [COLORS.trunk, COLORS.trunk],
-        stroke: 1.6,
+        color: [c, c],
+        stroke: computeArcDimmed ? 1.0 : 1.6,
         mw: e.mw,
       });
     });
@@ -269,12 +275,23 @@ function GlobeInner({ nodes, edges, layers, width, height }: InnerProps) {
 
   // BA name labels + active arc midpoint labels
   const htmlOverlays = useMemo(() => {
-    const items: Array<Record<string, unknown>> = BA_CENTERS.map((b) => ({
-      kind: 'ba',
-      lat: b.lat,
-      lng: b.lng,
-      ba: b.ba,
-    }));
+    // Suppress the BA label for whichever BA currently has VPP injection happening —
+    // its centroid is occupied by the VPP pill and the BA name competes for the
+    // same spot. (Other BA labels stay visible for orientation.)
+    const items: Array<Record<string, unknown>> = BA_CENTERS
+      .filter((b) => !(vppTargetBa && b.ba === vppTargetBa))
+      .map((b) => ({
+        kind: 'ba',
+        lat: b.lat,
+        lng: b.lng,
+        ba: b.ba,
+      }));
+
+    // While the FlashBanner is visible, suppress all competing in-map labels
+    // (VPP pill, mid-arc labels, direction arrows). They reappear after dismiss.
+    if (flashActive) {
+      return items;
+    }
 
     // VPP injection text label at the active BA centroid
     if (layers.reserves && byId.vpp?.status === 'active' && vppTargetBa) {
@@ -345,7 +362,7 @@ function GlobeInner({ nodes, edges, layers, width, height }: InnerProps) {
     }
 
     return items;
-  }, [edges, layers, byId, vppTargetBa, protectSourceDcId, criticalSites]);
+  }, [edges, layers, byId, vppTargetBa, protectSourceDcId, criticalSites, flashActive]);
 
   function zoom(delta: number) {
     const g = globeRef.current;
@@ -445,10 +462,12 @@ export function GlobeView({
   nodes,
   edges,
   layers,
+  flashActive,
 }: {
   nodes: GridNode[];
   edges: GridEdge[];
   layers: LayerState;
+  flashActive?: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ w: 800, h: 600 });
@@ -467,7 +486,14 @@ export function GlobeView({
 
   return (
     <div ref={ref} className="globe-canvas">
-      <GlobeInner nodes={nodes} edges={edges} layers={layers} width={size.w} height={size.h} />
+      <GlobeInner
+        nodes={nodes}
+        edges={edges}
+        layers={layers}
+        width={size.w}
+        height={size.h}
+        flashActive={flashActive}
+      />
     </div>
   );
 }

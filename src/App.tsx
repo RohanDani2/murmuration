@@ -1,9 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { BusTicker } from './components/BusTicker';
 import { EventLog } from './components/EventLog';
+import { FlashBanner } from './components/FlashBanner';
 import { FlatMapView } from './components/FlatMapView';
 import { GlobeView, type LayerState } from './components/GlobeView';
+import { LegendStrip } from './components/LegendStrip';
 import { MetricsPanel } from './components/MetricsPanel';
+import { StabilityGauge } from './components/StabilityGauge';
 import {
   SCENARIOS,
   initialEdges,
@@ -151,6 +154,14 @@ export default function App() {
   });
   const [view, setView] = useState<'globe' | 'flat'>('globe');
   const [panelCollapsed, setPanelCollapsed] = useState<Record<string, boolean>>({});
+  const [flashTrigger, setFlashTrigger] = useState(0);
+  const [flashPhase, setFlashPhase] = useState<Phase | null>(null);
+  // When a phase with a flash fires, we pause auto-advance until the user dismisses
+  // the banner. pendingFlashAdvance holds the next index to fire on dismiss.
+  const [pendingFlashAdvance, setPendingFlashAdvance] = useState<{
+    target: Scenario;
+    nextIndex: number;
+  } | null>(null);
   const togglePanel = (key: string) =>
     setPanelCollapsed((c) => ({ ...c, [key]: !c[key] }));
   const timers = useRef<number[]>([]);
@@ -241,6 +252,8 @@ export default function App() {
     setRunning(false);
     setComplete(false);
     setPendingGate(null);
+    setPendingFlashAdvance(null);
+    setFlashPhase(null);
   }
 
   function applyPhase(phase: Phase) {
@@ -264,6 +277,13 @@ export default function App() {
         ),
       ]);
     }
+    // Each phase: replace any existing flash with the new one (or clear if this phase has none).
+    if (phase.flash) {
+      setFlashPhase(phase);
+      setFlashTrigger((t) => t + 1);
+    } else {
+      setFlashPhase(null);
+    }
   }
 
   useEffect(() => {
@@ -283,43 +303,52 @@ export default function App() {
     reset(s);
   }
 
-  function schedulePhases(target: Scenario, fromIndex: number, baseDelayMs: number) {
-    const phasesToRun = target.phases.slice(fromIndex);
-    const baseOffset = fromIndex === 0 ? 0 : target.phases[fromIndex - 1]?.delayMs ?? 0;
-    for (let i = 0; i < phasesToRun.length; i++) {
-      const phase = phasesToRun[i];
-      const phaseIndex = fromIndex + i;
-      const relativeDelay = phase.delayMs - baseOffset;
-      const timer = window.setTimeout(() => {
-        applyPhase(phase);
-        if (phase.gated && phaseIndex < target.phases.length - 1) {
-          // Pause: cancel any subsequent timers and surface the gate
-          timers.current.forEach(window.clearTimeout);
-          timers.current = [];
-          setRunning(false);
-          setPendingGate({
-            label: phase.gateLabel ?? 'Continue →',
-            sublabel: phase.gateSublabel ?? '',
-            nextIndex: phaseIndex + 1,
-          });
-          return;
-        }
-        if (phaseIndex === target.phases.length - 1) {
-          setRunning(false);
-          setComplete(true);
-        }
-      }, baseDelayMs + relativeDelay);
-      timers.current.push(timer);
+  // Apply one phase, then decide what to do next:
+  //   - last phase  → mark complete
+  //   - has gate    → pause; surface the gate-overlay button
+  //   - has flash   → pause; the next phase will fire when user dismisses the flash
+  //   - plain phase → auto-advance after the delta to the next phase
+  function applyAndAdvance(target: Scenario, idx: number) {
+    const phase = target.phases[idx];
+    applyPhase(phase);
+    const isLast = idx === target.phases.length - 1;
+
+    if (isLast) {
+      setRunning(false);
+      setComplete(true);
+      return;
     }
+
+    if (phase.gated) {
+      setRunning(false);
+      setPendingGate({
+        label: phase.gateLabel ?? 'Continue →',
+        sublabel: phase.gateSublabel ?? '',
+        nextIndex: idx + 1,
+      });
+      return;
+    }
+
+    if (phase.flash) {
+      // Pause auto-advance — the user must dismiss the flash to continue.
+      setPendingFlashAdvance({ target, nextIndex: idx + 1 });
+      return;
+    }
+
+    // Plain auto-advance
+    const next = target.phases[idx + 1];
+    const delta = Math.max(0, next.delayMs - phase.delayMs);
+    const timer = window.setTimeout(() => applyAndAdvance(target, idx + 1), delta);
+    timers.current.push(timer);
   }
 
   function triggerScenario(s?: Scenario) {
     const target = s ?? scenario;
-    if (running || pendingGate) return;
+    if (running || pendingGate || pendingFlashAdvance) return;
     if (s && s.id !== scenario.id) setScenario(s);
     reset(target);
     setRunning(true);
-    schedulePhases(target, 0, 0);
+    applyAndAdvance(target, 0);
   }
 
   function resumeFromGate() {
@@ -328,7 +357,18 @@ export default function App() {
     const startIdx = pendingGate.nextIndex;
     setPendingGate(null);
     setRunning(true);
-    schedulePhases(target, startIdx, 0);
+    applyAndAdvance(target, startIdx);
+  }
+
+  // Called by the FlashBanner when the user dismisses it. Advances to the next
+  // phase if the engine was paused waiting on the flash.
+  function onFlashDismissed() {
+    setFlashPhase(null);
+    if (pendingFlashAdvance) {
+      const { target, nextIndex } = pendingFlashAdvance;
+      setPendingFlashAdvance(null);
+      applyAndAdvance(target, nextIndex);
+    }
   }
 
   function toggleLayer(key: keyof LayerState) {
@@ -440,23 +480,44 @@ export default function App() {
             </button>
           </div>
 
-          {view === 'globe' ? (
-            <GlobeView nodes={nodes} edges={edges} layers={layers} />
-          ) : (
-            <FlatMapView nodes={nodes} edges={edges} layers={layers} />
-          )}
+          <div className="map-frame">
+            {view === 'globe' ? (
+              <GlobeView
+                nodes={nodes}
+                edges={edges}
+                layers={layers}
+                flashActive={!!flashPhase}
+              />
+            ) : (
+              <FlatMapView
+                nodes={nodes}
+                edges={edges}
+                layers={layers}
+                flashActive={!!flashPhase}
+              />
+            )}
+            <StabilityGauge nodes={nodes} />
 
-          {nowPlaying.length > 0 && (
-            <div className="now-playing" aria-label="Now playing">
-              <div className="np-header">▶ Now happening</div>
-              {nowPlaying.map((ev, i) => (
-                <div key={`${ev.type}-${i}`} className={`np-row np-${ev.type}`}>
-                  <span className="np-label">{ev.label}</span>
-                  <span className="np-detail">{ev.detail}</span>
-                </div>
-              ))}
-            </div>
-          )}
+            <LegendStrip activeFlows={activeFlows} />
+
+            {nowPlaying.length > 0 && (
+              <div className="now-playing" aria-label="Now playing">
+                <div className="np-header">▶ Now happening</div>
+                {nowPlaying.map((ev, i) => (
+                  <div key={`${ev.type}-${i}`} className={`np-row np-${ev.type}`}>
+                    <span className="np-label">{ev.label}</span>
+                    <span className="np-detail">{ev.detail}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            <FlashBanner
+              trigger={flashTrigger}
+              phase={flashPhase}
+              onDismiss={onFlashDismissed}
+            />
+          </div>
 
           {pendingGate && (
             <div className="gate-overlay" role="dialog" aria-label="Scenario paused">
@@ -506,36 +567,8 @@ export default function App() {
             </button>
           </div>
 
-          <div className="map-legend">
-            <span
-              className="lg-stress"
-              data-active={activeFlows.stress || undefined}
-              title="Pulsing red ring = grid stress on that BA's data center"
-            >
-              Stress event
-            </span>
-            <span
-              className="lg-compute"
-              data-active={activeFlows.compute || undefined}
-              title="Cross-region compute jobs migrating over fiber. Not electricity — electricity stays local within each grid interconnection."
-            >
-              Compute migration (fiber)
-            </span>
-            <span
-              className="lg-vpp"
-              data-active={activeFlows.vpp || undefined}
-              title="Virtual Power Plant injection: home batteries + EVs discharging into the LOCAL grid, freeing aggregate capacity."
-            >
-              VPP local injection
-            </span>
-            <span
-              className="lg-protect"
-              data-active={activeFlows.protect || undefined}
-              title="Local power flow from the data center's BA grid to critical services (hospitals, water)."
-            >
-              Protected load (local)
-            </span>
-          </div>
+          {/* Bottom-left legend removed — replaced by always-visible LegendStrip
+              at top-center of the map (see <LegendStrip /> above). */}
         </section>
 
         <aside className="side-panel">

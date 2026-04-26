@@ -15,6 +15,9 @@ interface Props {
   nodes: GridNode[];
   edges: GridEdge[];
   layers: LayerState;
+  /** When true, suppress in-map labels (VPP pill, BA names) so the FlashBanner
+   *  isn't competing for visual attention. */
+  flashActive?: boolean;
 }
 
 const SHORT_LABEL: Record<string, string> = {
@@ -31,7 +34,7 @@ function nodeLatLng(id: string) {
   return null;
 }
 
-export function FlatMapView({ nodes, edges, layers }: Props) {
+export function FlatMapView({ nodes, edges, layers, flashActive }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ w: 900, h: 540 });
 
@@ -170,13 +173,15 @@ export function FlatMapView({ nodes, edges, layers }: Props) {
             </Marker>
           )}
 
-          {/* VPP halo (purple expanding ring at BA centroid) */}
+          {/* VPP halo (purple expanding ring at BA centroid) — pill text hidden during flash */}
           {layers.reserves && vppActive && vppHaloCenter && (
             <Marker coordinates={[vppHaloCenter.lng, vppHaloCenter.lat]}>
               <circle r={26} className="flat-vpp-halo" />
-              <text className="flat-vpp-pill" y={-32} textAnchor="middle">
-                +{vppEdge?.mw} MW · VPP local injection
-              </text>
+              {!flashActive && (
+                <text className="flat-vpp-pill" y={-32} textAnchor="middle">
+                  +{vppEdge?.mw} MW · VPP local injection
+                </text>
+              )}
             </Marker>
           )}
 
@@ -194,13 +199,14 @@ export function FlatMapView({ nodes, edges, layers }: Props) {
               );
             })}
 
-          {/* Compute migration arcs (cross-region, dashed light blue) */}
+          {/* Compute migration arcs (cross-region, dashed light blue).
+              Dimmed when VPP is active so the new VPP halo visuals stand out. */}
           {computeArcs.map((a, i) => (
             <Line
               key={`compute-${i}`}
               from={a.from}
               to={a.to}
-              className="flat-arc-compute"
+              className={`flat-arc-compute ${vppActive ? 'dimmed' : ''}`}
             />
           ))}
 
@@ -265,14 +271,17 @@ export function FlatMapView({ nodes, edges, layers }: Props) {
             );
           })}
 
-          {/* BA region labels */}
-          {BA_CENTERS.map((b) => (
-            <Marker key={`ba-${b.ba}`} coordinates={[b.lng, b.lat - 2.6]}>
-              <text textAnchor="middle" className="flat-ba-label">
-                {b.ba}
-              </text>
-            </Marker>
-          ))}
+          {/* BA region labels — hide the one for the BA where VPP is currently
+              injecting (the VPP halo + pill occupy that centroid). */}
+          {BA_CENTERS
+            .filter((b) => !(vppTargetBa && b.ba === vppTargetBa))
+            .map((b) => (
+              <Marker key={`ba-${b.ba}`} coordinates={[b.lng, b.lat - 2.6]}>
+                <text textAnchor="middle" className="flat-ba-label">
+                  {b.ba}
+                </text>
+              </Marker>
+            ))}
         </ZoomableGroup>
       </ComposableMap>
     </div>
