@@ -206,5 +206,4 @@ Brainstorm doc §6.3 makes the case: gridstatus is Python (one library covers 7 
   - `MURMURATION.md` — full architecture + thesis
   - `PITCH.md` — slide-by-slide rationale
   - `docs/reference/electric_travel.md` — grid physics (3 interconnections, MW-as-grid-impact, throttle/checkpoint/route)
-  - `docs/reference/shashank_branch_review.md` — branch architecture comparison
   - `murmuration/README.md` § "What's modeled vs. what's playback" for the data integrity story

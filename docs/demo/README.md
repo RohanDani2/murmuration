@@ -52,7 +52,6 @@ Then open `http://127.0.0.1:8765/`. Default tab is **3D Globe**. Other tabs: Fla
 
 ## Cross-references
 
-- Branch architecture comparison: `docs/reference/shashank_branch_review.md`
 - Grid-physics reference: `docs/reference/electric_travel.md`
 - Protocol thesis + design: `MURMURATION.md` (repo root)
 - Pitch slide-by-slide rationale: `PITCH.md` (repo root)
