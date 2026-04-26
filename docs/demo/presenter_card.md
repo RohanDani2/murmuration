@@ -19,11 +19,9 @@
 
 "And on the other side: data centers scaling at gigawatt pace, EV fleets, home batteries — billions of dollars of flexibility sitting idle when stress hits, because **there's no common language between supply and demand.**"
 
-### Hook  [~10s] — pick A or B, strike the loser before stage
+### Hook  [~10s] — locked: A *(re-confirm at 2pm sync)*
 
-> **HOOK A:** "The grid and the AI compute fleet need to start talking. We built the protocol — and the agents that speak it."
->
-> **HOOK B:** "Heat waves, line trips, ramps — the grid keeps breaking. Meanwhile a million flexible loads sit idle. We built the wire format that lets them coordinate."
+> **"The grid and the AI compute fleet need to start talking. We built the protocol — and the agents that speak it."**
 
 ### Names + arc  [~15s]
 

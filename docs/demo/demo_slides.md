@@ -27,9 +27,9 @@
 
 ### Speaker notes
 
-**Hook line — lock one before stage:**
-- A: "The grid and the AI compute fleet need to start talking. We built the protocol — and the agents that speak it."
-- B: "Heat waves, line trips, ramps — the grid keeps breaking. Meanwhile a million flexible loads sit idle. We built the wire format that lets them coordinate."
+**Hook line (locked: A — re-confirm at 2pm sync):**
+
+"The grid and the AI compute fleet need to start talking. We built the protocol — and the agents that speak it."
 
 **Then in order, fast:**
 1. Names + SCSP Grid track (5s).

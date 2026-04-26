@@ -62,10 +62,9 @@ Three angles, ~5s each. Don't read them; deliver them.
 2. "The experts who keep it standing — grid operators, utilities, regulators shaping the rules — are doing it with coordination tools designed for a world that doesn't exist anymore."
 3. "And on the other side: data centers scaling at gigawatt pace, EV fleets, home batteries — billions of dollars of flexibility sitting idle when stress hits, because **there's no common language between supply and demand.**"
 
-### Hook (~10s — lock A or B before stage; strike the loser)
+### Hook (~10s — locked: A. Re-confirm at 2pm sync.)
 
-- **A:** "The grid and the AI compute fleet need to start talking. We built the protocol — and the agents that speak it."
-- **B:** "Heat waves, line trips, ramps — the grid keeps breaking. Meanwhile a million flexible loads sit idle. We built the wire format that lets them coordinate."
+> "The grid and the AI compute fleet need to start talking. We built the protocol — and the agents that speak it."
 
 ### Names + arc (~15s)
 
