@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Murmuration — Distributed Grid Intelligence</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/black.css">
+
+    <style>
+        :root {
+            --accent: #4fc3f7;
+            --warn: #ff8a65;
+            --good: #81c784;
+        }
+        .reveal h1, .reveal h2, .reveal h3 { color: var(--accent); letter-spacing: -0.5px; }
+        .reveal .tag { color: #888; font-size: 0.5em; text-transform: uppercase; letter-spacing: 2px; }
+        .reveal .arc { display: flex; gap: 1.0rem; justify-content: center; margin-top: 1.6rem; }
+        .reveal .arc > div {
+            flex: 1; padding: 0.8rem; border: 1px solid #333; border-radius: 8px;
+            font-size: 0.5em; text-align: left;
+        }
+        .reveal .arc > div b { display: block; color: var(--accent); margin-bottom: 0.3rem; }
+        .reveal small { color: #888; }
+    </style>
+</head>
+<body>
+
+<div class="reveal">
+    <div class="slides">
+
+        <!-- Single cold-open slide. Speaker delivers problem framing verbally; demo is the rest of the deck. -->
+        <section>
+            <p class="tag">SCSP Hackathon · Electric Grid Optimization</p>
+            <h1>Murmuration</h1>
+            <h3>A protocol — and two live agents — for the grid and the AI compute fleet to negotiate flexibility under stress</h3>
+
+            <div class="arc">
+                <div><b>NEED</b>Grid stress detected. Live GridStateUpdate from EIA-930 + gridstatus. DispatchRequest fires on the bilateral bus.</div>
+                <div><b>DISPATCH</b>Compute fleet's standing FlexibilityEnvelope auto-accepts. TelemetryFrame streams. VPP swarm joins on the same wire format.</div>
+                <div><b>SELF-HEAL</b>Substation drops. Anomaly detector fires. Topology healer reroutes. Workload router fails over to sibling AZs. None of it scripted.</div>
+                <div><b>PROTECT</b>Critical load held. Peakers stayed cold. Settled at envelope rate.</div>
+            </div>
+
+            <p style="margin-top:1.4rem;"><small>Two real scenarios · One protocol · Two live Claude-narrated agents · Anchored to actual archived events</small></p>
+
+            <aside class="notes">
+                Hook (lock one):
+                  A: "The grid and the AI compute fleet need to start talking. We built the protocol — and the agents that speak it."
+                  B: "Heat waves, line trips, ramps — the grid keeps breaking. Meanwhile a million flexible loads sit idle."
+
+                Names + SCSP Grid track (5s — fast).
+                "What you'll see: two real-world scenarios, one protocol, two real Python agents on a bilateral bus, anchored to actual archived events."
+
+                Then SWITCH to live app at http://127.0.0.1:8765/  (NOT 5173 — that was nictopia)
+                3D Globe tab selected by default.
+                Don't linger on this slide.
+                30-second target. Hard cap 40s.
+            </aside>
+        </section>
+
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+    Reveal.initialize({
+        hash: true,
+        slideNumber: false,
+        transition: 'slide',
+        plugins: [ RevealNotes ]
+    });
+</script>
+
+</body>
+</html>
