@@ -7,17 +7,29 @@
 
 ---
 
-## Beat 1 · Cold open  [~30s · cap 40s]
+## Beat 1 · Cold open  [~45s · cap 55s]
 
 **[SLIDE UP — `demo_slides.html`]**
+
+### Problem paint  [~15s] — earn the hook before you swing it
+
+"The grid is breaking more often, with higher stakes. Heat waves, line trips, polar vortexes — events we used to call rare now hit every season."
+
+"The experts who keep it standing — grid operators, utilities, regulators shaping the rules — are doing it with coordination tools designed for a world that doesn't exist anymore."
+
+"And on the other side: data centers scaling at gigawatt pace, EV fleets, home batteries — billions of dollars of flexibility sitting idle when stress hits, because **there's no common language between supply and demand.**"
+
+### Hook  [~10s] — pick A or B, strike the loser before stage
 
 > **HOOK A:** "The grid and the AI compute fleet need to start talking. We built the protocol — and the agents that speak it."
 >
 > **HOOK B:** "Heat waves, line trips, ramps — the grid keeps breaking. Meanwhile a million flexible loads sit idle. We built the wire format that lets them coordinate."
 
-"I'm \_\_\_\_\_, this is Murmuration, SCSP Grid track. **[~5s]**"
+### Names + arc  [~15s]
 
-"What you'll see: two real-world scenarios, one protocol, two real Python agents on a bilateral bus, anchored to actual archived events."
+"I'm \_\_\_\_\_, this is Murmuration, SCSP Grid track."
+
+"What you'll see: two real-world scenarios, one protocol, two real Python agents on a bilateral bus, **anchored to actual archived events.** Then we'll show what it looks like when the grid heals itself with no human in the loop."
 
 **[CLOSE SLIDE → SWITCH TO http://127.0.0.1:8765/ · 3D GLOBE TAB]**
 
@@ -78,15 +90,25 @@
 
 ---
 
-## Beat 4 · Live close  [~30s · cap 40s]
+## Beat 4 · Live close  [~40s · cap 50s]
 
 **[STAY ON GLOBE — or switch to STORY TAB for slide-style close]**
 
-"LLMs can read operator intent and **write standing envelopes** — and stay out of the dispatch path. Live agents on each side, narrating in plain English. **That's the unlock.** [~10s]"
+### Future paint — we're an enablement layer, not a replacement  [~15s]
 
-"We want a **pilot**. One ISO, one hyperscaler campus, one VPP aggregator. 12 months. **No new market rules required.** [~10s]"
+"The role for AI here isn't replacing the operators, the utilities, or the policymakers. It's giving the experts who keep the lights on a **faster way to coordinate** — with the compute fleet, with VPP aggregators, with the regulators shaping the rules."
 
-"Happy to take questions. Seven other scenarios — surplus solar, polar vortex, line-trip contingency, carbon arbitrage, eclipse — all loaded if you want to see them. [~10s]"
+"We're the enablement layer. **Experts keep the wheel. We make it turn faster.**"
+
+### What this unlocks  [~10s]
+
+"Data centers keep scaling — without breaking the grid. **Critical infrastructure** — hospitals, water systems, ISO control rooms — gets first-class routing the moment grid stress hits. None of it requires new market rules."
+
+### Ask + hand off  [~15s]
+
+"We want a **pilot**: one ISO, one hyperscaler campus, one VPP aggregator. 12 months."
+
+"Happy to take questions. Seven other scenarios are loaded — surplus solar, polar vortex, line-trip contingency, carbon arbitrage, eclipse — different shapes of the same problem, same protocol solving them."
 
 ---
 

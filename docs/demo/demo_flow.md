@@ -38,27 +38,41 @@ mindmap
 
 | Beat | Target | Hard cap |
 |---|---|---|
-| 1 · Cold open slide | 0:30 | 0:40 |
-| 2 · Texas heat wave | 1:45 | 2:00 |
-| 3 · PJM Loudoun self-healing | 1:45 | 2:00 |
-| 4 · Live close | 0:30 | 0:40 |
-| **Total** | **4:30** | **5:00** |
+| 1 · Cold open slide (problem paint + hook + arc) | 0:45 | 0:55 |
+| 2 · Texas heat wave | 1:30 | 1:45 |
+| 3 · PJM Loudoun self-healing | 1:30 | 1:45 |
+| 4 · Live close (future paint + ask) | 0:40 | 0:50 |
+| **Total** | **4:25** | **5:00** |
 
-30-second buffer is intentional. Demos drift. If you're at 4:00 entering Beat 4, cut the close to 30s flat and stop talking.
+35-second buffer is intentional. Demos drift. If you're at 4:00 entering Beat 4, cut the close to 30s flat — keep the future-paint sentence and the pilot ask, drop the unlocks line. Stop talking by 5:00 no matter what.
 
 ---
 
-## Beat 1 · Cold open slide  (~30s)
+## Beat 1 · Cold open slide  (~45s)
 
 Single slide. See `demo_slides.html` (or `demo_slides.md`).
 
-- **Hook line** (lock one before stage):
-  - A: "The grid and the AI compute fleet need to start talking. We built the protocol — and the agents that speak it."
-  - B: "Heat waves, line trips, ramps — the grid keeps breaking. Meanwhile a million flexible loads sit idle. We built the wire format that lets them coordinate."
-- **Names + SCSP Grid track**  (5s — fast)
-- **What you'll see**: "Two real-world scenarios, one protocol, two real Python agents on a bilateral bus, anchored to actual archived events."
+The job of this beat is to **earn the hook before swinging it**. Don't open with the solution — open with the problem the experts in the audience already know in their bones, then deliver the hook as the inflection.
 
-> Then — and this is the most important transition in the demo — close the slide and switch to the live app. Don't linger on the slide. The rest is shown, not told.
+### Problem paint (~15s — paint, don't lecture)
+
+Three angles, ~5s each. Don't read them; deliver them.
+
+1. "The grid is breaking more often, with higher stakes. Heat waves, line trips, polar vortexes — events we used to call rare now hit every season."
+2. "The experts who keep it standing — grid operators, utilities, regulators shaping the rules — are doing it with coordination tools designed for a world that doesn't exist anymore."
+3. "And on the other side: data centers scaling at gigawatt pace, EV fleets, home batteries — billions of dollars of flexibility sitting idle when stress hits, because **there's no common language between supply and demand.**"
+
+### Hook (~10s — lock A or B before stage; strike the loser)
+
+- **A:** "The grid and the AI compute fleet need to start talking. We built the protocol — and the agents that speak it."
+- **B:** "Heat waves, line trips, ramps — the grid keeps breaking. Meanwhile a million flexible loads sit idle. We built the wire format that lets them coordinate."
+
+### Names + arc (~15s)
+
+- "I'm \_\_\_\_\_, Murmuration, SCSP Grid track."
+- "What you'll see: two real-world scenarios, one protocol, two real Python agents on a bilateral bus, **anchored to actual archived events.** Then we'll show what it looks like when the grid heals itself with no human in the loop."
+
+> Then — most important transition in the demo — close the slide and switch to the live app. Don't linger. The rest is shown, not told.
 
 ## Beat 2 · Texas heat wave  (~1:45)
 
@@ -111,13 +125,24 @@ The technical-depth one. Self-healing grid. Barati's "feedback loops" beat AND M
 - "Three things just happened automatically. The anomaly detector caught an unplanned event. The topology healer rerouted around it. The workload router picked the cheapest fix. No human in the loop on any of those — and **none of it was scripted into this scenario**. The scenario only said 'mark DC-VA-1a unavailable.' The protocol did the rest."
 - *Both judges:* this is the cleanest demonstration of "behaves like a valid simplified power system."
 
-## Beat 4 · Live close  (~30s)
+## Beat 4 · Live close  (~40s)
 
 Stay in the live app. Either keep on Globe view, or switch to the **Story tab** for a slide-style close.
 
-- **Why now** (~10s): "LLMs can read operator intent and write standing envelopes — and stay out of the dispatch path. Live agents on each side, narrating in plain English. That's the unlock."
-- **Ask** (~10s): "We want a pilot. One ISO, one hyperscaler campus, one VPP aggregator. 12 months. No new market rules required."
-- **Hand off** (~10s): "Happy to take questions. The seven other scenarios — surplus solar, polar vortex cascade, line-trip contingency, carbon arbitrage, eclipse — are all loaded and ready if you want to see them."
+The job of this beat is to **paint the future** — not as utopia, but as a coordination layer that augments the experts already doing the work. Land hard on "enablement, not replacement." This is the framing every grid-skeptical judge needs to hear.
+
+### Future paint — enablement layer for the experts (~15s)
+
+"The role for AI here isn't replacing operators, utilities, or policymakers. It's giving the experts who keep the lights on a **faster way to coordinate** — with the compute fleet, with VPP aggregators, with the regulators shaping the rules. We're the enablement layer. **Experts keep the wheel. We make it turn faster.**"
+
+### What this unlocks (~10s)
+
+"Data centers keep scaling — without breaking the grid. **Critical infrastructure** — hospitals, water systems, ISO control rooms — gets first-class routing the moment grid stress hits. None of it requires new market rules."
+
+### Ask + hand off (~15s)
+
+- **Ask:** "We want a pilot: one ISO, one hyperscaler campus, one VPP aggregator. 12 months."
+- **Hand off:** "Happy to take questions. Seven other scenarios are loaded — surplus solar, polar vortex, line-trip contingency, carbon arbitrage, eclipse — different shapes of the same problem, same protocol solving them."
 
 ---
 
