@@ -43,7 +43,7 @@
 **[POINT AT bus feed right rail]** "GridStateUpdate ticking — and there's the **DispatchRequest** firing on the bus."
 
 ### Compute responds  [~30s]
-"The compute fleet's standing **FlexibilityEnvelope** is already on file. Auto-accept within band."
+"The compute fleet's standing **FlexibilityEnvelope** — its published offer: *'I'll absorb up to X megawatts, in this price band, with this notice'* — is already on file. Auto-accept within band."
 
 **[WATCH FOR DispatchAck within ~2s, then TelemetryFrame streaming]**
 **[GLOBE: arc fires from ERCOT to a sibling region]**
@@ -53,7 +53,9 @@
 ### VPP swarm joins  [~30s]
 **[GLOBE: smaller arc fans from Bay Area VPP centroid]**
 
-"Same FlexibilityEnvelope schema, **six orders of magnitude smaller**. One wire format from data center to home battery. The protocol scales."
+"This is a **VPP — Virtual Power Plant**: a swarm of home batteries, EVs, and smart thermostats acting as one dispatchable resource. Same FlexibilityEnvelope schema as the data center — **six orders of magnitude smaller.** One wire format from gigawatt to kilowatt."
+
+"And this is where **everyday households become first-class grid participants** — earning revenue when their batteries help during stress events. The reserves of the future aren't just peaker plants — they're neighborhoods."
 
 ### Honest counterfactual  [~20s]
 "We don't claim Murmuration would have prevented Uri. We claim it would have **softened it**. The 4.5 million customers who lost power were the consequence of zero coordination across the bilateral interface. **This is the coordination.**"
@@ -98,9 +100,9 @@
 
 "We're the enablement layer. **Experts keep the wheel. We make it turn faster.**"
 
-### What this unlocks  [~10s]
+### What this unlocks  [~15s]
 
-"Data centers keep scaling — without breaking the grid. **Critical infrastructure** — hospitals, water systems, ISO control rooms — gets first-class routing the moment grid stress hits. None of it requires new market rules."
+"Data centers keep scaling — without breaking the grid. **Critical infrastructure** — hospitals, water systems, ISO control rooms — gets first-class routing the moment stress hits. And as you just saw, **everyday households** — through virtual power plants — become dispatchable reserves and earn revenue when they help. None of it requires new market rules."
 
 ### Ask + hand off  [~15s]
 

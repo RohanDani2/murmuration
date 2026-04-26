@@ -24,13 +24,13 @@ A protocol — and two live agents — for the grid and the AI compute fleet to 
 
 ## Short description (~50 words)
 
-The grid is breaking more often, with higher stakes — and billions of dollars of flexibility sit idle when stress hits because there's no common language between supply and demand. Murmuration is that wire format: a bilateral protocol and two live Python agents that let datacenters, VPPs, and ISOs coordinate in seconds, not phone-tree minutes.
+The grid is breaking more often, with higher stakes — and billions of dollars of flexibility sit idle when stress hits because there's no common language between supply and demand. Murmuration is that wire format: a bilateral protocol and two live Python agents that let datacenters, VPPs (virtual power plants — swarms of home batteries, EVs, and smart thermostats), and ISOs coordinate in seconds, not phone-tree minutes.
 
 ## Long description (~250 words)
 
 Heat waves, polar vortexes, line trips, Asheville floods, Maui fires, California wildfires — events we used to call rare now hit every season. The experts who keep the grid standing are coordinating with tools built for a world that doesn't exist anymore. Meanwhile, data centers scaling at gigawatt pace, EV fleets, and home batteries sit idle when stress hits — because there's no common language between supply and demand.
 
-**Murmuration is that wire format**: a bilateral protocol with seven message types and two live Python agents — one on the grid side, one on the compute fleet side — that negotiate flexibility envelopes in seconds. Every demo scenario is anchored to a real archived event: Texas Uri (2021), PJM Loudoun (2024), and seven more. The anomaly detector (rolling 4σ z-score on live grid state), the topology healer (networkx K-shortest paths), and the tiered workload router are real — none of it scripted into the scenarios.
+**Murmuration is that wire format**: a bilateral protocol with seven message types and two live Python agents — one on the grid side, one on the compute fleet side — that negotiate **flexibility envelopes** (each side's published offer: "I'll absorb up to X megawatts, in this band, with this notice") in seconds. Every demo scenario is anchored to a real archived event: Texas Uri (2021), PJM Loudoun (2024), and seven more. The anomaly detector (rolling 4σ z-score on live grid state), the topology healer (networkx K-shortest paths), and the tiered workload router are real — none of it scripted into the scenarios.
 
 We are explicitly **not replacing** operators, utilities, or policymakers. We are the **enablement layer** that lets the experts running US critical infrastructure keep the wheel — and make it turn faster. Data centers keep scaling without breaking the grid. Critical infrastructure — hospitals, water systems, ISO control rooms — gets first-class routing the moment stress hits. No new market rules required.
 

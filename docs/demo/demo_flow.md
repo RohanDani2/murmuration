@@ -85,15 +85,17 @@ The dramatic one. Anchored to Feb 2021 Uri (246 deaths, $130B). McGee's "control
 - *McGee hook:* this is what an operator sees. *Barati hook:* clean cause→effect — demand spike → price signal → bus message.
 
 ### Compute side responds (~30s)
-- "The compute fleet's standing `FlexibilityEnvelope` is already on file — it was published last tick by `ComputeAgent`. Auto-accept within band."
+- "The compute fleet's standing `FlexibilityEnvelope` — its published offer: *'I'll absorb up to X megawatts, in this price band, with this notice'* — is already on file. It was published last tick by `ComputeAgent`. Auto-accept within band." *(The inline definition is for non-DR-fluent judges. Skip the parenthetical if you're confident the judge knows the term — saves ~4s.)*
 - Watch the bus: `DispatchAck` lands within ~2 seconds, then `TelemetryFrame` starts streaming.
 - Globe: an arc fires from ERCOT to a sibling region (cross-region migration via `WorkloadMigration`).
 - *Pre-empt the LLM question:* "The dispatch path is deterministic by design — that's why it lands in seconds, not minutes. Where's the LLM? It writes the *envelope* offline (the operator's standing offer). And it narrates this scenario live in the agent-chatter feed below."
 
 ### VPP swarm engages (~30s)
 - The grid agent fans out a smaller dispatch to the Bay Area VPP (`make_bay_area_vpp` — 100 homes, ~5 kW each).
-- "Same `FlexibilityEnvelope` schema, six orders of magnitude smaller. One wire format from data center to home battery. The protocol scales."
 - VPP cluster on the globe brightens; a smaller arc fans from the VPP centroid to the stressed BA.
+- "This is a **VPP — Virtual Power Plant**: a swarm of home batteries, EVs, and smart thermostats acting as one dispatchable resource."
+- "Same `FlexibilityEnvelope` schema as the data center, **six orders of magnitude smaller**. One wire format from gigawatt to kilowatt."
+- "And this is where **everyday households become first-class grid participants** — earning revenue when their batteries help during stress events. The reserves of the future aren't just peaker plants — they're neighborhoods." *(This is the populist + opportunity beat. SCSP-aligned: democratic participation in critical infrastructure. Don't skip.)*
 
 ### Counterfactual (~20s, spoken)
 - "Honest framing: we don't claim Murmuration would have prevented Uri. We claim it would have softened it. The 4.5 million customers who lost power for days were the consequence of zero coordination across the bilateral interface. This is the coordination."
@@ -134,9 +136,11 @@ The job of this beat is to **paint the future** — not as utopia, but as a coor
 
 "The role for AI here isn't replacing operators, utilities, or policymakers. It's giving the experts who keep the lights on a **faster way to coordinate** — with the compute fleet, with VPP aggregators, with the regulators shaping the rules. We're the enablement layer. **Experts keep the wheel. We make it turn faster.**"
 
-### What this unlocks (~10s)
+### What this unlocks (~15s)
 
-"Data centers keep scaling — without breaking the grid. **Critical infrastructure** — hospitals, water systems, ISO control rooms — gets first-class routing the moment grid stress hits. None of it requires new market rules."
+"Data centers keep scaling — without breaking the grid. **Critical infrastructure** — hospitals, water systems, ISO control rooms — gets first-class routing the moment stress hits. And as you just saw, **everyday households** — through virtual power plants — become dispatchable reserves and earn revenue when they help. None of it requires new market rules."
+
+*Three pillars: data centers, critical infra, consumers. Rhetorical pattern of three lands. Don't add a fourth.*
 
 ### Ask + hand off (~15s)
 
