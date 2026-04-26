@@ -6,6 +6,40 @@
 
 ---
 
+## 📊 Honest rubric self-score — 73/100  (Nic's read at ~1:45pm)
+
+**B+. Borderline top-3 of 12.** Could be top-3 if other teams land in the 60s, could be top-6 if everyone hits 75+. This score is the fact base for every decision below — if you disagree with the call, push back so we can recalibrate the polish list.
+
+| Dimension (25 max) | Score | Where points come from / where they leak |
+|---|:---:|---|
+| **Technical Difficulty** | **22 / 25** | 🟢 Live Python agents, anomaly detector, topology healer, tiered router, real ISO data, live narrator. PJM Loudoun is the proof. Loses 3 to "uses existing libraries (FastAPI/Pydantic/networkx)" critique + no benchmarks. |
+| **Novelty of Approach** | **19 / 25** | 🟢 Standing envelopes, six orders of magnitude on one schema, cloud-pattern tiered router. Loses 6 to "could be heard as just AI for DR" + no formal first-to-X claim. |
+| **Potential National Impact** | **17 / 25** | 🟡 7 ISOs in graph, real archived events, claim hygiene, "no new market rules." Loses 8 to no LOIs, no design partner, demo shows only 2 of 7 ISOs, counterfactuals self-bounded ("softened, not prevented"). |
+| **Problem-Solution Fit** | **15 / 25** | 🔴 3-AZ topology, operator language, honest-limit answers. Loses 10 to: **no operator interviews, no design partner, academic-vs-ethnographic framing.** This is the landmine. |
+
+### Realistic delta with time we have
+
+| Scenario | Score |
+|---|:---:|
+| **Floor** — demo crashes mid-stream OR operator-fit question fumbled | ~70 |
+| **Likely** — current trajectory, no further investment | ~75 |
+| **Ceiling** — clean rehearsal + operator-fit locked + consumer pillar delivered + acronyms land | ~85 |
+
+### Top-3 improvement levers (prioritized by points-per-effort)
+
+1. **+5–7 to Fit** — Lock decision #4 verbatim. Practice the answer aloud once in rehearsal. **🎯 Stretch goal: if anyone can text or call one grid contact (operator, ISO staff, FERC alum, utility engineer) before 5pm and get a single quote into the submission text, that's worth +2 on its own.** This is the single most leveraged move left on the board.
+2. **+3 to Tech Diff** — Two clean dress rehearsals before 4:30. Live demos that crash mid-execution lose 5–10 points instantly. Rehearsal is insurance, not polish.
+3. **+3 to Impact** — Watcher checklist: confirm Beat 4's consumer-pillar line ("everyday households become first-class grid participants") *actually got delivered.* Easy to skip when running long. It's free points sitting on the floor.
+
+### What we are deliberately NOT going to improve
+
+- **Tech Difficulty beyond what's there.** Adding more = breaking what works at T-3hr.
+- **Novelty by reframing the protocol.** Locked. Ship it as designed.
+- **Impact via LOIs / partnerships.** Not feasible by 5pm.
+- **Beats 2 and 3 narrative restructure.** Per Nic — those are for the 2pm sync to refine collaboratively, not pre-decide.
+
+---
+
 ## ✅ What's already done (don't relitigate)
 
 - Demo runs locally on `dev-cs` at `http://127.0.0.1:8765/` — Python+FastAPI live tick loop, 9 scenarios, 3 UI views.
