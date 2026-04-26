@@ -15,7 +15,7 @@
 
 "The grid is breaking more often, with higher stakes. Heat waves, polar vortexes, line trips, **Asheville floods, Maui fires, California wildfires** — events we used to call rare now hit every season." **[BRIEF PAUSE]** "I've probably missed ones that hit closer to home for some of you."
 
-"The experts who keep it standing — grid operators, utilities, regulators shaping the rules — are doing it with coordination tools designed for a world that doesn't exist anymore."
+"The experts who keep it standing — grid operators, utilities, regulators shaping the rules — are doing it with coordination tools designed for a world that doesn't exist anymore. **The operator at 2 AM watching reserves drop has three tools: peakers, curtailment, brownouts. Each one costs more than the last.**"
 
 "And on the other side: data centers scaling at gigawatt pace, EV fleets, home batteries — billions of dollars of flexibility sitting idle when stress hits, because **there's no common language between supply and demand.**"
 
@@ -96,7 +96,7 @@
 
 ### Future paint — we're an enablement layer, not a replacement  [~15s]
 
-"The role for AI here isn't replacing the operators, the utilities, or the policymakers. It's giving the experts who keep the lights on a **faster way to coordinate** — with the compute fleet, with VPP aggregators, with the regulators shaping the rules."
+"The role for AI here isn't replacing the operators, the utilities, or the policymakers. It's giving the experts who keep the lights on a **faster way to coordinate** — with the compute fleet, with VPP aggregators, with the regulators shaping the rules. **A common wire format for the flexible energy fleet.**"
 
 "We're the enablement layer. **Experts keep the wheel. We make it turn faster.**"
 

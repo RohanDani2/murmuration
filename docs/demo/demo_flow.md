@@ -59,7 +59,7 @@ The job of this beat is to **earn the hook before swinging it**. Don't open with
 Three angles, ~5s each. Don't read them; deliver them.
 
 1. "The grid is breaking more often, with higher stakes. Heat waves, polar vortexes, line trips, **Asheville floods, Maui fires, California wildfires** — events we used to call rare now hit every season." **[brief pause]** "I've probably missed ones that hit closer to home for some of you." *(The pause + acknowledgment is doing real work — every grid person in the room has lived through one of these. Don't rush past it.)*
-2. "The experts who keep it standing — grid operators, utilities, regulators shaping the rules — are doing it with coordination tools designed for a world that doesn't exist anymore."
+2. "The experts who keep it standing — grid operators, utilities, regulators shaping the rules — are doing it with coordination tools designed for a world that doesn't exist anymore. **The operator at 2 AM watching reserves drop has three tools: peakers, curtailment, brownouts. Each one costs more than the last.**" *(The "operator at 2 AM" anchors to Uri — EEA3 was called in the early hours of Feb 16, 2021. Not generic — earned.)*
 3. "And on the other side: data centers scaling at gigawatt pace, EV fleets, home batteries — billions of dollars of flexibility sitting idle when stress hits, because **there's no common language between supply and demand.**"
 
 ### Hook (~10s — locked: A. Re-confirm at 2pm sync.)
@@ -134,7 +134,7 @@ The job of this beat is to **paint the future** — not as utopia, but as a coor
 
 ### Future paint — enablement layer for the experts (~15s)
 
-"The role for AI here isn't replacing operators, utilities, or policymakers. It's giving the experts who keep the lights on a **faster way to coordinate** — with the compute fleet, with VPP aggregators, with the regulators shaping the rules. We're the enablement layer. **Experts keep the wheel. We make it turn faster.**"
+"The role for AI here isn't replacing operators, utilities, or policymakers. It's giving the experts who keep the lights on a **faster way to coordinate** — with the compute fleet, with VPP aggregators, with the regulators shaping the rules. **A common wire format for the flexible energy fleet.** We're the enablement layer. **Experts keep the wheel. We make it turn faster.**" *(Two memorable lines back-to-back: "wire format for the flexible energy fleet" is the sticky differentiator; "make it turn faster" is the punchline. Don't merge them — the rhythm needs the breath between.)*
 
 ### What this unlocks (~15s)
 
