@@ -20,6 +20,11 @@ env/
 *.swp
 *~
 
+# --- frontend prototype leftovers (nictopia branch — not used by dev-cs) ---
+node_modules/
+dist/
+.vite/
+
 # --- claude code local state ---
 .claude/
 
