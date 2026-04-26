@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Murmuration — Distributed Grid Intelligence</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/black.css">
+
+    <style>
+        :root {
+            --accent: #4fc3f7;
+            --warn: #ff8a65;
+            --good: #81c784;
+        }
+        .reveal h1, .reveal h2, .reveal h3 { color: var(--accent); letter-spacing: -0.5px; }
+        .reveal .tag { color: #888; font-size: 0.5em; text-transform: uppercase; letter-spacing: 2px; }
+        .reveal .arc { display: flex; gap: 1.5rem; justify-content: center; margin-top: 2rem; }
+        .reveal .arc > div {
+            flex: 1; padding: 1rem; border: 1px solid #333; border-radius: 8px;
+            font-size: 0.75em; text-align: left;
+        }
+        .reveal .arc > div b { display: block; color: var(--accent); margin-bottom: 0.4rem; }
+        .reveal .stress { color: var(--warn); }
+        .reveal .relief { color: var(--good); }
+        .reveal small { color: #888; }
+    </style>
+</head>
+<body>
+
+<div class="reveal">
+    <div class="slides">
+
+        <!-- Slide 1 — Title -->
+        <section>
+            <p class="tag">SCSP AI Hackathon · Grid-Aware AI Agents</p>
+            <h1>Murmuration</h1>
+            <h3>A protocol for the grid and the AI compute fleet to negotiate flexibility</h3>
+            <p><small>10-minute demo · 3 scenarios · 1 protocol</small></p>
+            <aside class="notes">
+                Hook: "The grid and the AI compute fleet need to start talking. We built the protocol."
+                Keep this slide ~30 seconds.
+            </aside>
+        </section>
+
+        <!-- Slide 2 — Problem -->
+        <section>
+            <p class="tag">The problem</p>
+            <h2>Grid stress is up. Flexibility is idle.</h2>
+            <ul>
+                <li><span class="stress">Climate</span> — heat waves, wildfires, hurricanes hitting peaks the grid wasn't sized for</li>
+                <li><span class="stress">AI compute</span> — fastest-growing inflexible load in 50 years</li>
+                <li><span class="relief">DERs</span> — millions of batteries, EVs, thermostats sit on the sidelines</li>
+                <li><span class="stress">No common protocol</span> — every dispatch is bespoke, manual, slow</li>
+            </ul>
+            <p><small>Today's response: peakers, curtailment, blackouts.</small></p>
+            <aside class="notes">
+                Land on: "We can do better." Don't dwell &gt; 90 seconds.
+                Cite LBNL 2024 DC report if a judge presses on AI compute load.
+            </aside>
+        </section>
+
+        <!-- Slide 3 — The arc / what you're about to see -->
+        <section>
+            <p class="tag">What you'll see</p>
+            <h2>One protocol. Four beats. Three scenarios.</h2>
+
+            <div class="arc">
+                <div><b>NEED</b>Grid stress detected. LMP spike, headroom drop. Grid agent emits a DispatchRequest.</div>
+                <div><b>SOURCE</b>Compute fleet throttles. Training jobs migrate across BAs within a standing envelope.</div>
+                <div><b>ROUTE</b>VPP swarm dispatches. 50K homes commit MW on the same protocol — six orders of magnitude smaller.</div>
+                <div><b>PROTECT</b>Critical load held. Peakers stayed cold. Settled at envelope rate.</div>
+            </div>
+
+            <p style="margin-top:2rem;"><small>Scenarios: ERCOT heat wave · CAISO wildfire / PSPS · CAISO duck curve</small></p>
+
+            <aside class="notes">
+                After this slide, switch to the live app at http://localhost:5173/.
+                Trigger ERCOT heat wave first.
+            </aside>
+        </section>
+
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/notes/notes.js"></script>
+<script>
+    Reveal.initialize({
+        hash: true,
+        slideNumber: 'c/t',
+        transition: 'slide',
+        plugins: [ RevealNotes ]
+    });
+</script>
+
+</body>
+</html>
