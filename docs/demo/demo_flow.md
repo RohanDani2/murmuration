@@ -58,7 +58,7 @@ The job of this beat is to **earn the hook before swinging it**. Don't open with
 
 Three angles, ~5s each. Don't read them; deliver them.
 
-1. "The grid is breaking more often, with higher stakes. Heat waves, line trips, polar vortexes — events we used to call rare now hit every season."
+1. "The grid is breaking more often, with higher stakes. Heat waves, polar vortexes, line trips, **Asheville floods, California wildfires** — events we used to call rare now hit every season." **[brief pause]** "I've probably missed ones that hit closer to home for some of you." *(The pause + acknowledgment is doing real work — every grid person in the room has lived through one of these. Don't rush past it.)*
 2. "The experts who keep it standing — grid operators, utilities, regulators shaping the rules — are doing it with coordination tools designed for a world that doesn't exist anymore."
 3. "And on the other side: data centers scaling at gigawatt pace, EV fleets, home batteries — billions of dollars of flexibility sitting idle when stress hits, because **there's no common language between supply and demand.**"
 
