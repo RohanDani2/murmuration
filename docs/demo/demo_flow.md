@@ -80,7 +80,7 @@ The dramatic one. Anchored to Feb 2021 Uri (246 deaths, $130B). McGee's "control
 **Setup before the beat:** make sure the **3D Globe view** is selected (top-center tabs). Camera should be focused on continental US. Click the "Texas heat wave" scenario in the side panel.
 
 ### Live narration (~25s)
-- "HOU_HUB LMP just spiked to $410. That number is a real ERCOT scenario override fed into the live tick loop."
+- "Houston's wholesale electricity price — the **Locational Marginal Price**, or **LMP** — just spiked to $410. That number is a real scenario override from the **Electric Reliability Council of Texas** — **ERCOT** — fed into the live tick loop." *(After first use, "LMP" and "ERCOT" can be used freely. Define on first use only.)*
 - Point at the **bus feed** on the right rail — `GridStateUpdate` ticking, then a `DispatchRequest` appears.
 - *McGee hook:* this is what an operator sees. *Barati hook:* clean cause→effect — demand spike → price signal → bus message.
 
@@ -93,7 +93,7 @@ The dramatic one. Anchored to Feb 2021 Uri (246 deaths, $130B). McGee's "control
 ### VPP swarm engages (~30s)
 - The grid agent fans out a smaller dispatch to the Bay Area VPP (`make_bay_area_vpp` — 100 homes, ~5 kW each).
 - VPP cluster on the globe brightens; a smaller arc fans from the VPP centroid to the stressed BA.
-- "This is a **VPP — Virtual Power Plant**: a swarm of home batteries, EVs, and smart thermostats acting as one dispatchable resource."
+- "This is a **Virtual Power Plant** — or **VPP**: a swarm of home batteries, EVs, and smart thermostats acting as one dispatchable resource."
 - "Same `FlexibilityEnvelope` schema as the data center, **six orders of magnitude smaller**. One wire format from gigawatt to kilowatt."
 - "And this is where **everyday households become first-class grid participants** — earning revenue when their batteries help during stress events. The reserves of the future aren't just peaker plants — they're neighborhoods." *(This is the populist + opportunity beat. SCSP-aligned: democratic participation in critical infrastructure. Don't skip.)*
 
@@ -108,14 +108,14 @@ The technical-depth one. Self-healing grid. Barati's "feedback loops" beat AND M
 **Setup:** Reset the previous scenario (let it expire or click reset). Click "PJM Loudoun substation overload" in the side panel.
 
 ### Outage triggers (~25s)
-- "Loudoun substation supplying our Northern Virginia data center DC-VA-1a just saturated. The AZ goes dark."
+- "Loudoun substation in the **PJM Interconnection** — the mid-Atlantic grid operator — supplying our Northern Virginia data center DC-VA-1a just saturated. The **availability zone** goes dark." *(First use of PJM and availability zone — after this, "PJM" and "AZ" are fair game without re-defining.)*
 - Watch the globe: DC-VA-1a marker dims to gray (unavailable). The **anomaly detector** auto-fires `ContingencyAlert` (purple flash on the globe).
 - *Barati hook:* "The detector is a rolling z-score on the live `GridStateUpdate` stream — 4σ threshold. No scripting, no scenario said 'fire an alert' — the math fired it."
 
 ### Topology healer responds (~25s)
 - The `TopologyHealer` consumes the alert, marks the affected edge failed in the `networkx` substation graph, computes K-shortest alternate paths, publishes `TopologyReconfigure` on the bus.
 - Watch the bus feed for the healer's message — green flag "Self-healing · TX-EDGE-12 rerouted."
-- *McGee hook:* "An ISO operator sees this exact pattern in their EMS today. We're showing the protocol layer that lets the compute side react to it without phone-tree coordination."
+- *McGee hook:* "Operators at an **Independent System Operator** — an **ISO** — see this exact pattern in their **Energy Management System** (EMS) today. We're showing the protocol layer that lets the compute side react to it without phone-tree coordination."
 
 ### Workload router escalates by tier (~30s)
 - The `ComputeAgent`'s `WorkloadRouter` activates. Tier 1: route stranded workloads from DC-VA-1a to **sibling AZs** DC-VA-1b (Sterling) and DC-VA-1c (Manassas). Sub-millisecond latency. No data migration.
@@ -144,7 +144,7 @@ The job of this beat is to **paint the future** — not as utopia, but as a coor
 
 ### Ask + hand off (~15s)
 
-- **Ask:** "We want a pilot: one ISO, one hyperscaler campus, one VPP aggregator. 12 months."
+- **Ask:** "We want a pilot: one ISO, one **hyperscaler** (large cloud provider) campus, one VPP aggregator. 12 months."
 - **Hand off:** "Happy to take questions. Seven other scenarios are loaded — surplus solar, polar vortex, line-trip contingency, carbon arbitrage, eclipse — different shapes of the same problem, same protocol solving them."
 
 ---

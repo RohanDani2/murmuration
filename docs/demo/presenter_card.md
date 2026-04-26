@@ -38,7 +38,7 @@
 **[CLICK "Texas heat wave" in side panel]**
 
 ### Stress hits  [~25s]
-"HOU_HUB LMP just spiked to **$410**. Real ERCOT scenario override fed into the live tick loop."
+"Houston's wholesale electricity price — the **Locational Marginal Price**, or **LMP** — just spiked to **$410**. Real scenario override from the **Electric Reliability Council of Texas** — **ERCOT** — fed into the live tick loop."
 
 **[POINT AT bus feed right rail]** "GridStateUpdate ticking — and there's the **DispatchRequest** firing on the bus."
 
@@ -53,7 +53,7 @@
 ### VPP swarm joins  [~30s]
 **[GLOBE: smaller arc fans from Bay Area VPP centroid]**
 
-"This is a **VPP — Virtual Power Plant**: a swarm of home batteries, EVs, and smart thermostats acting as one dispatchable resource. Same FlexibilityEnvelope schema as the data center — **six orders of magnitude smaller.** One wire format from gigawatt to kilowatt."
+"This is a **Virtual Power Plant** — or **VPP**: a swarm of home batteries, EVs, and smart thermostats acting as one dispatchable resource. Same FlexibilityEnvelope schema as the data center — **six orders of magnitude smaller.** One wire format from gigawatt to kilowatt."
 
 "And this is where **everyday households become first-class grid participants** — earning revenue when their batteries help during stress events. The reserves of the future aren't just peaker plants — they're neighborhoods."
 
@@ -69,7 +69,7 @@
 **[RESET previous scenario → CLICK "PJM Loudoun substation overload"]**
 
 ### Outage triggers  [~25s]
-"Loudoun substation supplying **DC-VA-1a** just saturated. The AZ goes dark."
+"Loudoun substation in the **PJM Interconnection** — the mid-Atlantic grid operator — supplying our Northern Virginia data center **DC-VA-1a** just saturated. The **availability zone** goes dark." *(After this, "PJM" and "AZ" can be used freely — defined.)*
 
 **[GLOBE: DC-VA-1a marker dims to gray. PURPLE FLASH = ContingencyAlert from anomaly detector]**
 
@@ -78,7 +78,7 @@
 ### Topology healer responds  [~25s]
 **[BUS FEED: green flag "Self-healing · TX-EDGE-12 rerouted"]**
 
-"TopologyHealer marks the failed edge in the networkx graph, runs **K-shortest alternate paths**, publishes TopologyReconfigure. An ISO operator sees this exact pattern in their EMS today — we're showing the protocol that lets compute react without phone-tree coordination."
+"TopologyHealer marks the failed edge in the networkx graph, runs **K-shortest alternate paths**, publishes TopologyReconfigure. Operators at an **Independent System Operator** — an **ISO** — see this exact pattern in their **Energy Management System** today. We're showing the protocol that lets compute react without phone-tree coordination."
 
 ### Workload router · tier 1  [~30s]
 **[GLOBE: short cyan arcs flash WITHIN NoVA cluster — sibling-AZ failover]**
@@ -106,7 +106,7 @@
 
 ### Ask + hand off  [~15s]
 
-"We want a **pilot**: one ISO, one hyperscaler campus, one VPP aggregator. 12 months."
+"We want a **pilot**: one ISO, one **hyperscaler** (large cloud provider) campus, one VPP aggregator. 12 months."
 
 "Happy to take questions. Seven other scenarios are loaded — surplus solar, polar vortex, line-trip contingency, carbon arbitrage, eclipse — different shapes of the same problem, same protocol solving them."
 

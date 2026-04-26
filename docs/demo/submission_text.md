@@ -24,7 +24,7 @@ A protocol — and two live agents — for the grid and the AI compute fleet to 
 
 ## Short description (~50 words)
 
-The grid is breaking more often, with higher stakes — and billions of dollars of flexibility sit idle when stress hits because there's no common language between supply and demand. Murmuration is that wire format: a bilateral protocol and two live Python agents that let datacenters, VPPs (virtual power plants — swarms of home batteries, EVs, and smart thermostats), and ISOs coordinate in seconds, not phone-tree minutes.
+The grid is breaking more often, with higher stakes — and billions of dollars of flexibility sit idle when stress hits because there's no common language between supply and demand. Murmuration is that wire format: a bilateral protocol and two live Python agents that let datacenters, virtual power plants (VPPs — swarms of home batteries, EVs, and smart thermostats), and Independent System Operators (ISOs — the entities running each regional grid) coordinate in seconds, not phone-tree minutes.
 
 ## Long description (~250 words)
 
@@ -62,7 +62,7 @@ The hardest part of building a coordination protocol isn't the protocol — it's
 
 ## What's next
 
-The 12-month pilot: one ISO, one hyperscaler campus, one VPP aggregator. Within that pilot — replace the deterministic playback with a real workload scheduler integration, add a cryptographic signing layer to the bus, walk the protocol through the FERC/NERC standards path. Phase 2 (continental scaling) follows. **We are explicitly not building a replacement for operators or utilities — we are the enablement layer that lets the experts keep the wheel and make it turn faster.** The next conversations are with ISOs, hyperscalers, and the FERC standards office.
+The 12-month pilot: one ISO, one hyperscaler (large cloud provider) campus, one VPP aggregator. Within that pilot — replace the deterministic playback with a real workload scheduler integration, add a cryptographic signing layer to the bus, walk the protocol through the **FERC** (Federal Energy Regulatory Commission) and **NERC** (North American Electric Reliability Corporation) standards path. Phase 2 (continental scaling) follows. **We are explicitly not building a replacement for operators or utilities — we are the enablement layer that lets the experts keep the wheel and make it turn faster.** The next conversations are with ISOs, hyperscalers, and the FERC standards office.
 
 ## Built with
 
