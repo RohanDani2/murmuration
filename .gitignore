@@ -7,9 +7,16 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Node / build artifacts (explicit + nested for IDE source-control panels)
 node_modules
+**/node_modules
 dist
+**/dist
 dist-ssr
+build
+**/build
+out
+**/out
 *.local
 
 # Env / secrets (EIA, NREL, Anthropic keys etc.)
@@ -21,13 +28,20 @@ dist-ssr
 # Build / cache
 *.tsbuildinfo
 .vite/
+**/.vite/
+.cache/
+.turbo/
+.next/
+.parcel-cache/
 coverage/
 
 # Python (data-fetch scripts under scripts/)
 __pycache__/
+**/__pycache__/
 *.py[cod]
 *.egg-info/
 .venv/
+**/.venv/
 venv/
 env/
 scripts/venv/
@@ -36,13 +50,25 @@ scripts/.venv/
 # Raw data downloads (curated JSON in public/cache/ IS committed)
 scripts/raw/
 
-# Editor directories and files
+# OS / system files
+.DS_Store
+**/.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor / IDE directories and files
 .vscode/*
 !.vscode/extensions.json
+.idea/
 .idea
-.DS_Store
+.history/
+.zed/
+.cursor/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+*.swp
+*.swo
+*~
