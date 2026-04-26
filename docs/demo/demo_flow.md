@@ -48,7 +48,9 @@ mindmap
 
 ---
 
-## Beat 1 · Cold open slide  (~45s)
+## Beat 1 · Cold open slide  (~60s — proposed grew, see budget table note)
+
+> ⚠️ **Budget tension to lock at 2pm sync:** Beat 1 grew from 45s → 60s with the AI-pressure-AND-solution framing and the democratization pull-forward (per Nic's iteration with team feedback). The top-of-doc time budget table still shows 0:45 — needs reallocation. Options: (a) shrink Beat 4 to 25s "light close" per earlier discussion, (b) trim Beats 2/3 by 5-7s each, (c) accept 4:35 target instead of 4:25.
 
 Single slide. See `demo_slides.html` (or `demo_slides.md`).
 
@@ -62,11 +64,25 @@ Three angles, ~5s each. Don't read them; deliver them.
 2. "The experts who keep it standing — grid operators, utilities, regulators shaping the rules — are doing it with coordination tools designed for a world that doesn't exist anymore. **The operator at 2 AM watching reserves drop has three tools: peakers, curtailment, brownouts. Each one costs more than the last.**" *(The "operator at 2 AM" anchors to Uri — EEA3 was called in the early hours of Feb 16, 2021. Not generic — earned.)*
 3. "And on the other side: data centers scaling at gigawatt pace, EV fleets, home batteries — billions of dollars of flexibility sitting idle when stress hits, because **there's no common language between supply and demand.**"
 
-### Hook (~10s — locked: A. Re-confirm at 2pm sync.)
+### What we built — AI as pressure AND solution (~12s — NEW)
+
+"AI is the fastest-growing load on the grid — but it's also the most flexible. We built **a wire format** that lets the AI compute fleet offer that flexibility back — published as a standing offer the grid can call on in milliseconds. And **predictive models on top**: load forecasting from live grid telemetry, real-time anomaly detection that catches contingencies before they cascade, and continuous awareness of where compute capacity is actually available across the fleet."
+
+*(Defangs the "AI buzzword" critique — names concrete capabilities (forecasting, anomaly detection, capacity awareness) that map directly to real code: sklearn `GradientBoostingRegressor`, the 4σ z-score detector, the tiered router. The "AI is also the solution" pivot is non-negotiable — without it the framing reads as cautionary instead of constructive.)*
+
+### Hook (~8s — locked: A. Re-confirm at 2pm sync.)
 
 > "The grid and the AI compute fleet need to start talking. We built the protocol — and the agents that speak it."
 
-### Names + arc (~15s)
+### The door this opens — democratization (~13s — NEW, pulled forward from Beat 4)
+
+"And here's the door this opens: **everyday households join a virtual power plant — pooled batteries, EVs, thermostats — and become first-class grid participants.** Their reserves help their community when stress hits — and existing policy is already in place to pay them for showing up. **The reserves of the future aren't just peaker plants. They're neighborhoods.**"
+
+*(Sticky line at the end: "reserves of the future... neighborhoods." Memorable phrase for judge deliberation. Note: simplified from earlier draft — dropped "FERC Order 2222 / IRA credits" specifics because they're tongue-twisters in spoken delivery. The named policy hooks still live in submission_text.md "What's next" section where judges read carefully.)*
+
+*(Implication: Beat 4's "consumer pillar" callback may now be redundant. Consider trimming Beat 4 to a light close at 2pm sync.)*
+
+### Names + arc (~7s)
 
 - "I'm \_\_\_\_\_, Murmuration, SCSP Grid track."
 - "What you'll see: two real-world scenarios, one protocol, two real Python agents on a bilateral bus, **anchored to actual archived events.** Then we'll show what it looks like when the grid heals itself with no human in the loop."
