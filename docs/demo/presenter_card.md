@@ -13,7 +13,7 @@
 
 ### Problem paint  [~15s] — earn the hook before you swing it
 
-"The grid is breaking more often, with higher stakes. Heat waves, polar vortexes, line trips, **Asheville floods, California wildfires** — events we used to call rare now hit every season." **[BRIEF PAUSE]** "I've probably missed ones that hit closer to home for some of you."
+"The grid is breaking more often, with higher stakes. Heat waves, polar vortexes, line trips, **Asheville floods, Maui fires, California wildfires** — events we used to call rare now hit every season." **[BRIEF PAUSE]** "I've probably missed ones that hit closer to home for some of you."
 
 "The experts who keep it standing — grid operators, utilities, regulators shaping the rules — are doing it with coordination tools designed for a world that doesn't exist anymore."
 
